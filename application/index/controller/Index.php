@@ -1,9 +1,9 @@
 <?php
 namespace app\index\controller;
 
-use think\Controller;
+use app\index\common\Base;
 
-class Index extends Controller
+class Index extends Base
 {
     public function index()
     {
