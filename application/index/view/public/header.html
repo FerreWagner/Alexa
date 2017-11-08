@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Home</title>
+<!-- Behavioral Meta Data -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="icon" type="image/png" href="__STATIC__/IMG/small-logo-01.png" />
+<link href="__STATIC__/CSS/spore-font.css" rel="stylesheet" />
+<link href="__STATIC__/CSS/animate.css" rel="stylesheet" />
+<link href="__STATIC__/CSS/spore-animate.css" rel="stylesheet" />
+<style>
+/* CONTENT BODY SETTINGS - DON'T TOUCH !*/html,body{height: 100%;/** Adaptative screen **/margin:0;padding:0;}
+/* HEADER / BODY*/.blank{position:relative;/** Div for the transition when your leave the url - fade out/in white color **/width:100%;height:100%;z-index:50;background-color:#FFF;}
+#A0{background: url(__STATIC__/IMG/gallery-in-a-page.jpg) 50% 50% no-repeat;/** Background image - change it here !**/position:absolute;background-size: cover;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;left: 0;top: 0;right: 0;bottom: 0;z-index:1;}
+#A1-main{position:relative;/** Main div to adapt all the element to the body**/width:100%;height:100%;z-index:1;}
+#A1{position:relative;/** Sub div to adapt the background for the body**/width:100%;height:100%;z-index:1;}
+#A0-2{background-color:#101613;/** Transparent background across the background **/opacity:0.5;position:absolute;width:100%;height:100%;left: 0;top: 0;right: 0;bottom: 0;z-index:2;}
+#trame{background-image: url(__STATIC__/IMG/trame.svg);/** Pattern - overlay **/background-repeat:repeat;position:absolute;width:100%;height:100%;left: 0;top: 0;right: 0;bottom: 0;z-index:3;opacity:0.8;}
+#wrapper-head{position:absolute;/** Main div for the title, arrow icon and button learn more **/height:100%;width:100%;z-index:5;opacity:0;top:0;}
+#title{position:absolute;z-index:4;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;text-align:center;font-size:24px;line-height:130%;color:#FFF;font-family: 'open_sansregular';width:50%;margin-left:25%;height:100%;top:50%;}
+#wrapper-logo{position:absolute;width:169px;height:45px;margin-left:-500px;left:50%;top:50px;z-index:11;overflow: hidden;opacity:0;}
+#logo{width:100%;height:100%;position:absolute;left:0;top:0;background-repeat:no-repeat;cursor:pointer;}
+#wrapper-plus{background-image: url(__STATIC__/IMG/plus.svg);background-repeat:no-repeat;position:absolute;width:32px;height:32px;left:50%;margin-left:450px;z-index:5;top:60px;cursor:pointer;opacity:0;}
+#fleche1{position:absolute;background-image: url(__STATIC__/IMG/ancre.svg);background-repeat:no-repeat;width:40px;height:40px;top:90%;left:50%;margin-left:-20px;z-index:4;cursor:pointer;}
+#wrapper-learnmore{position:absolute;width:140px;height:45px;left:50%;margin-left:-70px;top:65%;opacity:1;z-index:4;cursor:pointer;}
+.bouton-learnmore{position:absolute;width:100%;height:100%;left:0;opacity:1;top:0;background-color:#transparent;border:solid 2px #FFF;border-radius:10px;}
+.text-learnmore{position:absolute;z-index:1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;text-align:center;font-size:18px;line-height:45px;height:45px;color:#FFF;font-family: 'open_sanssemibold';width:80%;margin-left:10%;}
+/* TAB MENU / HEADER*/#main-wrapper-menu{position:relative;width:100%;height:0;z-index:10;background-color:#FFF;}
+#wrapper-menu{position:absolute;height:auto;width:100%;left:50%;margin-left:-50%;top:50%;margin-top:-20%;}
+.recent-post{position:relative;width:100%;height:auto;z-index:1;display:none;}
+#recent-post-title,#recent-post-1,#recent-post-2,#recent-post-3,#recent-post-4{position:relative;width:70%;left:50%;margin-left:-35%;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;text-align:center;font-size:17px;line-height:150%;color:#666;font-family: 'open_sanssemibold';letter-spacing:-1px;padding-bottom:10px;height:auto;}
+.category-post{position:relative;width:100%;height:auto;z-index:1;padding-top:15px;display:none;}
+#category-post-title,#category-post-1,#category-post-2,#category-post-3{position:relative;width:70%;left:50%;margin-left:-35%;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;text-align:center;font-size:17px;line-height:150%;color:#666;font-family: 'open_sanssemibold';letter-spacing:-1px;padding-bottom:10px;height:auto;}
+#line-category-post{position:relative;width:75px;height:1px;background-color:#CCC;left:50%;margin-left:-37.5px;margin-bottom:15px;}
+#wrapper-cross{background-image: url(__STATIC__/IMG/cross.svg);background-repeat:no-repeat;position:absolute;width:32px;height:32px;left:50%;margin-left:450px;z-index:11;bottom:10%;cursor:pointer;opacity:1;}
