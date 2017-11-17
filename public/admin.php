@@ -9,6 +9,8 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
+header('X-Powered-By: Go1.8');
+header('Server: Caddy');
 // [ 应用入口文件 ]
 
 // 定义应用目录

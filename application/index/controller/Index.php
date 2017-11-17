@@ -10,7 +10,10 @@ class Index extends Base
     {
         return $this->view->fetch('index');
     }
-    
+    public function test()
+    {
+        echo 'test';
+    }
     public function callback()
     {
         $this->success('登陆成功！', 'index/index/index');
