@@ -16,7 +16,7 @@ class System extends Controller
     public function index()
     {
         //
-        return $this->view->fetch('system_set');
+        return $this->view->fetch('system-set');
         
     }
 
@@ -47,8 +47,12 @@ class System extends Controller
      * @param  int  $id
      * @return \think\Response
      */
-    public function linkList()
+    public function linkList(Request $request)
     {
+        if ($request->isPost()){
+            $res = Link::create($request->param());
+            return ($res ? redirect('system/linkList') : $this->error('未添加成功'));
+        }
         $link_list = Link::all();
         $this->assign('link_list', $link_list);
         return $this->view->fetch('sys-link');
@@ -85,17 +89,17 @@ class System extends Controller
         }
     }
     
-    /**
-     * 友链添加
-     */
-    public function linkAdd(Request $request)
-    {
-        if ($request->isAjax(true)){
-            $res = Link::create($request->param());
-            return ($res ? ['message' => '添加成功', 'status' => 1] : ['message' => '添加失败', 'status' => 0]);
-        }
-    }
-    
+//    /**
+//     * 友链添加
+//     */
+//    public function linkAdd(Request $request)
+//    {
+//        if ($request->isAjax(true)){
+//            $res = Link::create($request->param());
+//            return ($res ? ['message' => '添加成功', 'status' => 1] : ['message' => '添加失败', 'status' => 0]);
+//        }
+//    }
+
     /**
      * 友链删除
      */
