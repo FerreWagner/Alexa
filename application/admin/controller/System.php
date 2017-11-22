@@ -4,6 +4,7 @@ namespace app\admin\controller;
 
 use think\Controller;
 use app\admin\model\Link;
+use think\Loader;
 use think\Request;
 
 class System extends Controller
@@ -50,6 +51,12 @@ class System extends Controller
     public function linkList(Request $request)
     {
         if ($request->isPost()){
+            //验证表单
+            $validate = Loader::validate('Syetem');
+            if (!$validate->scene('add')->check($request->param())){
+                $this->error($validate->getError());
+            }
+
             $res = Link::create($request->param());
             return ($res ? redirect('system/linkList') : $this->error('未添加成功'));
         }
@@ -75,6 +82,12 @@ class System extends Controller
     {
         if ($request->isPost()){
             $link_update = $request->param();
+
+            //验证表单
+            $validate = Loader::validate('Syetem');
+            if (!$validate->scene('edit')->check($link_update)){
+                $this->error($validate->getError());
+            }
             
             $map = ['name' => $link_update['name'], ['id' => $link_update['id']]];
             $res = Link::update($link_update, $map);
@@ -95,7 +108,7 @@ class System extends Controller
 //    public function linkAdd(Request $request)
 //    {
 //        if ($request->isAjax(true)){
-//            $res = Link::create($request->param());
+//            $res = Syetem::create($request->param());
 //            return ($res ? ['message' => '添加成功', 'status' => 1] : ['message' => '添加失败', 'status' => 0]);
 //        }
 //    }
