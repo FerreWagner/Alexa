@@ -96,6 +96,14 @@ class System extends Controller
         }
     }
     
+    /**
+     * 友链删除
+     */
+    public function linkDelete()
+    {
+        
+    }
+    
 
     /**
      * 显示编辑资源表单页.
