@@ -19,10 +19,10 @@
                     </div>
                     <label class="layui-form-label">URL</label>
                     <div class="layui-input-inline">
-                      <input type="text" name="link"  placeholder="http://www.baidu.com" autocomplete="off" class="layui-input">
+                      <input type="text" name="url"  placeholder="http://www.baidu.com" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-input-inline" style="width:80px">
-                        <button class="layui-btn"  lay-submit="" lay-filter="*"><i class="layui-icon">&#xe608;</i>添加</button>
+                        <button class="layui-btn" lay-submit="" lay-filter="*" id="btn"><i class="layui-icon">&#xe608;</i>添加</button>
                     </div>
                   </div>
                 </div> 
@@ -95,14 +95,6 @@
               layer = layui.layer;//弹出层
               form = layui.form();//弹出层
 
-              //监听提交
-              form.on('submit(*)', function(data){
-                console.log(data);
-                //发异步，把数据提交给php
-                layer.alert("增加成功", {icon: 6});
-                $('#x-link').prepend('<tr><td><input type="checkbox"value="1"name=""></td><td>1</td><td>'+data.field.name+'</td><td>'+data.field.link+'</td><td>0</td><td class="td-manage"><a title="编辑"href="javascript:;"onclick="link_edit(\'编辑\',\'link-edit.html\',\'4\',\'\',\'510\')"class="ml-5"style="text-decoration:none"><i class="layui-icon">&#xe642;</i></a><a title="删除"href="javascript:;"onclick="link_del(this,\'1\')"style="text-decoration:none"><i class="layui-icon">&#xe640;</i></a></td></tr>');
-                return false;
-              });
             })
 
               //以上模块根据需要引入
@@ -128,5 +120,28 @@
                 });
             }
             </script>
+          <script>
+            $(function(){
+                $("#btn").on('click',function(){
+                	alert(1);
+                    $.ajax({
+                        type: 'POST',
+                        url: "{:url('system/update')}",
+                        data: $("#config").serialize(),
+                        dataType: "json",
+                        success: function(data){
+                            console.log(data);
+                            if (data.status == 1) {
+                                alert(data.message);
+                                window.location.href = "{:url('system/index')}";
+                            } else {
+                                alert(data.message);
+                                window.location.href = "{:url('system/edit')}";
+                            }
+                        }
+                    })
+                })
+            })
+        </script>
     </body>
 </html>
