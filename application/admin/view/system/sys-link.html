@@ -10,7 +10,7 @@
             <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
         </div>
         <div class="x-body">
-            <form class="layui-form x-center" action="" style="width:70%" id="config">
+            <form class="layui-form x-center" method="post" action="" style="width:70%" id="config">
                 <div class="layui-form-pane" style="margin-top: 15px;">
                   <div class="layui-form-item">
                     <label class="layui-form-label">链接名</label>
@@ -124,27 +124,5 @@
                 });
             }
             </script>
-          <script>
-            $(function(){
-                $("#btnlink").on('click',function(){
-                    $.ajax({
-                        type: "POST",
-                        url: "{:url('system/linkAdd')}",
-                        data: $("#config").serialize(),
-                        dataType: "json",
-                        success: function(data){
-                            console.log(data);
-                            if (data.status == 1) {
-                                alert(data.message);
-                                window.location.href = "{:url('system/linklist')}";
-                            } else {
-                                alert(data.message);
-                                window.location.href = "{:url('system/linklist')}";
-                            }
-                        }
-                    })
-                })
-            })
-        </script>
     </body>
 </html>
