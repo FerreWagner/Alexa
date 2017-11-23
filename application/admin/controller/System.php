@@ -94,16 +94,6 @@ class System extends Controller
         }
     }
     
-//    /**
-//     * 友链添加
-//     */
-//    public function linkAdd(Request $request)
-//    {
-//        if ($request->isAjax(true)){
-//            $res = Syetem::create($request->param());
-//            return ($res ? ['message' => '添加成功', 'status' => 1] : ['message' => '添加失败', 'status' => 0]);
-//        }
-//    }
     /**
      * 友链删除
      */
