@@ -51,7 +51,7 @@ class System extends Controller
     {
         $link_list = Link::all();
         $this->assign('link_list', $link_list);
-        return $this->view->fetch('sys-link');
+        return $this->view->fetch('sys_link');
     }
     
     /**
@@ -93,6 +93,8 @@ class System extends Controller
         if ($request->isAjax(true)){
             $res = Link::create($request->param());
             return ($res ? ['message' => '添加成功', 'status' => 1] : ['message' => '添加失败', 'status' => 0]);
+        }else {
+            return $this->error('error');
         }
     }
     
@@ -104,38 +106,4 @@ class System extends Controller
         
     }
     
-
-    /**
-     * 显示编辑资源表单页.
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * 保存更新的资源
-     *
-     * @param  \think\Request  $request
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * 删除指定资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function delete($id)
-    {
-        //
-    }
 }
