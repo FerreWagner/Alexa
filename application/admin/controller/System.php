@@ -37,7 +37,7 @@ class System extends Controller
         //
     }
     /**
-     * 显示友链
+     * 显示 && 添加友链
      *
      * @param  int  $id
      * @return \think\Response

@@ -14,7 +14,8 @@ class Admin extends Controller
      */
     public function index()
     {
-        //
+        $ferre = db('admin')->find(1);
+        $this->view->assign('ferre', $ferre);
         return $this->view->fetch('admin_list');
         
     }
