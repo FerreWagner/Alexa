@@ -8,7 +8,7 @@ use app\admin\common\Base;
 class Login extends Base
 {
     /**
-     * 显示资源列表 && 登录
+     * 显示资源列表 && 登录1
      *
      * @return \think\Response
      */
