@@ -27,13 +27,13 @@ class Login extends Base
      */
     public function login(Request $request)
     {
-        //
         if ($request->isPost()){
             $admin_data = input('post.');
             $res = db('admin')->where('username', $admin_data['username'])->select();
+//             dump(sha1(md5($admin_data['password'].'alexa')));die;
             if (!$res || 'ferre' != $admin_data['username']){
                 $this->error('Error,Dear');
-            }elseif ($res[0]['password'] == sha1(md5($admin_data['password']).'alexa')){
+            }elseif ($res[0]['password'] == sha1(md5($admin_data['password'].'alexa'))){
                 echo 'right';
             }else {
                 $this->error('Error,Dear');
