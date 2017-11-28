@@ -1,13 +1,10 @@
 <?php
-
 namespace app\admin\controller;
-
-use think\Controller;
+use app\admin\common\Base;
 use app\admin\model\Link;
 use think\Loader;
 use think\Request;
-
-class System extends Controller
+class System extends Base
 {
     /**
      * 显示资源列表
@@ -20,7 +17,6 @@ class System extends Controller
         return $this->view->fetch('system-set');
         
     }
-
     /**
      * 显示创建资源表单页.
      *
@@ -30,7 +26,6 @@ class System extends Controller
     {
         //
     }
-
     /**
      * 保存新建的资源
      *
@@ -41,9 +36,8 @@ class System extends Controller
     {
         //
     }
-
     /**
-     * 显示友链
+     * 显示 && 添加友链
      *
      * @param  int  $id
      * @return \think\Response
@@ -56,7 +50,6 @@ class System extends Controller
             if (!$validate->scene('add')->check($request->param())){
                 $this->error($validate->getError());
             }
-
             $res = Link::create($request->param());
             return ($res ? redirect('system/linkList') : $this->error('未添加成功'));
         }
@@ -82,7 +75,6 @@ class System extends Controller
     {
         if ($request->isPost()){
             $link_update = $request->param();
-
             //验证表单
             $validate = Loader::validate('Syetem');
             if (!$validate->scene('edit')->check($link_update)){
@@ -102,17 +94,6 @@ class System extends Controller
         }
     }
     
-//    /**
-//     * 友链添加
-//     */
-//    public function linkAdd(Request $request)
-//    {
-//        if ($request->isAjax(true)){
-//            $res = Syetem::create($request->param());
-//            return ($res ? ['message' => '添加成功', 'status' => 1] : ['message' => '添加失败', 'status' => 0]);
-//        }
-//    }
-
     /**
      * 友链删除
      */
@@ -121,7 +102,6 @@ class System extends Controller
         
     }
     
-
     /**
      * 显示编辑资源表单页.
      *
@@ -132,7 +112,6 @@ class System extends Controller
     {
         //
     }
-
     /**
      * 保存更新的资源
      *
@@ -144,7 +123,6 @@ class System extends Controller
     {
         //
     }
-
     /**
      * 删除指定资源
      *
