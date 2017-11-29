@@ -1,10 +1,8 @@
 <?php
-
 namespace app\admin\controller;
-
 use think\Request;
 use app\admin\common\Base;
-
+use think\Session;
 class Login extends Base
 {
     /**
@@ -14,75 +12,35 @@ class Login extends Base
      */
     public function index()
     {
-        
+        $this->alreadyLogin();
         return $this->view->fetch('login');
     }
-
-
     /**
-     * 保存新建的资源1
-     *
-     * @param  \think\Request  $request
-     * @return \think\Response
+     * @param Request $request
      */
     public function login(Request $request)
     {
         if ($request->isPost()){
             $admin_data = input('post.');
             $res = db('admin')->where('username', $admin_data['username'])->select();
-//             dump(sha1(md5($admin_data['password'].'alexa')));die;
-            if (!$res || 'ferre' != $admin_data['username']){
+            if (!$res){
                 $this->error('Error,Dear');
             }elseif ($res[0]['password'] == sha1(md5($admin_data['password'].'alexa'))){
-                echo 'right';
+                Session::set('user_name', $res[0]['username']);
+                Session::set('user_data', $res[0]);
+                return $this->redirect('admin/index/index');
             }else {
                 $this->error('Error,Dear');
             }
         }
     }
-
     /**
-     * 显示指定的资源
-     *
-     * @param  int  $id
-     * @return \think\Response
+     * logout
      */
-    public function read($id)
+    public function logout()
     {
-        //
-    }
-
-    /**
-     * 显示编辑资源表单页.
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * 保存更新的资源
-     *
-     * @param  \think\Request  $request
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * 删除指定资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function delete($id)
-    {
-        //
+        Session::delete('user_name');
+        Session::delete('user_data');
+        $this->success('Logout Success.Dear.', 'admin/login/index');
     }
 }

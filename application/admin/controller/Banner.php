@@ -2,10 +2,10 @@
 
 namespace app\admin\controller;
 
-use think\Controller;
+use app\admin\common\Base;
 use think\Request;
 
-class Banner extends Controller
+class Banner extends Base
 {
     /**
      * 显示资源列表

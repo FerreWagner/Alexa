@@ -1,10 +1,11 @@
 <?php
 namespace app\admin\controller;
-use think\Controller;
+
+use app\admin\common\Base;
 use app\admin\model\Link;
 use think\Loader;
 use think\Request;
-class System extends Controller
+class System extends Base
 {
     /**
      * 显示资源列表

@@ -2,9 +2,11 @@
 
 namespace app\admin\controller;
 
-use think\Controller;
 
-class Admin extends Controller
+use app\admin\common\Base;
+
+
+class Admin extends Base
 {
     /**
      * 显示资源列表
