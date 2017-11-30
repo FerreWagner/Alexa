@@ -26,57 +26,20 @@ class Category extends Base
         if($request->isPost()){
             $_data = input('post.');
             $validate = Loader::validate('Category');
-            if(!$validate->scene('add')->check($_data)){
+            if(!$validate->scene('save')->check($_data)){
                 $this->error($validate->getError());
             }
             
 //             $catemodel->data($_data);
 //             $_add = $catemodel->save();
             $_add = $catemodel->create($_data);
-            if($_add){
-                $this->redirect('admin/category/index');
-            }else{
-                $this->error('Add Cate Error.Dear');
-            }
+            $_add ? $this->redirect('admin/category/index') : $this->error('Add Cate Error.Dear');
         }
         
         $this->view->assign(['cate' => $cate, 'cate_count' => $cate_count]);
         return $this->view->fetch('category_list');
     }
 
-    /**
-     * 显示创建资源表单页.
-     *
-     * @return \think\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * 保存新建的资源
-     *
-     * @param  \think\Request  $request
-     * @return \think\Response
-     */
-    public function save(Request $request)
-    {
-        //
-        $_cate = new CateGoryModel();
-
-    }
-
-    /**
-     * 显示指定的资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function read($id)
-    {
-        //
-    }
 
     /**
      * 显示编辑资源表单页.
@@ -86,7 +49,9 @@ class Category extends Base
      */
     public function edit($id)
     {
-        //
+        $cate = CateGoryModel::find($id);
+        $this->view->assign('cate', $cate);
+        return $this->view->fetch('category_edit');
     }
 
     /**
@@ -96,9 +61,17 @@ class Category extends Base
      * @param  int  $id
      * @return \think\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        if($request->isPost()){
+            $_data    = input('post.');
+            $validate = Loader::validate('Category');
+            if(!$validate->scene('edit')->check($_data)){
+                $this->error($validate->getError());
+            }
+            $res = CateGoryModel::update($_data, ['id' => $_data['id']]);
+            $res ? $this->redirect('admin/category/index') : $this->error('Edit Cate Error.Dear');
+        }
     }
 
     /**
