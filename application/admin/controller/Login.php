@@ -1,5 +1,4 @@
 <?php
-
 namespace app\admin\controller;
 
 use think\Request;
@@ -18,8 +17,6 @@ class Login extends Base
         $this->alreadyLogin();
         return $this->view->fetch('login');
     }
-
-
     /**
      * @param Request $request
      */
@@ -33,14 +30,12 @@ class Login extends Base
             }elseif ($res[0]['password'] == sha1(md5($admin_data['password'].'alexa'))){
                 Session::set('user_name', $res[0]['username']);
                 Session::set('user_data', $res[0]);
-
                 return $this->redirect('admin/index/index');
             }else {
                 $this->error('Error,Dear');
             }
         }
     }
-
     /**
      * logout
      */
@@ -48,8 +43,6 @@ class Login extends Base
     {
         Session::delete('user_name');
         Session::delete('user_data');
-
         $this->success('Logout Success.Dear.', 'admin/login/index');
     }
-
 }
