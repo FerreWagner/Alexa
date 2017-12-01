@@ -5,6 +5,7 @@ use app\admin\common\Base;
 use app\admin\model\Link;
 use think\Loader;
 use think\Request;
+use app\admin\model\System as SystemModel;
 class System extends Base
 {
     /**
@@ -15,27 +16,40 @@ class System extends Base
     public function index()
     {
         //
+        $this->view->assign('system', SystemModel::get(1));
+        
         return $this->view->fetch('system-set');
         
     }
+    
     /**
-     * 显示创建资源表单页.
-     *
-     * @return \think\Response
-     */
-    public function create()
-    {
-        //
-    }
-    /**
-     * 保存新建的资源
+     * 保存更新的资源
      *
      * @param  \think\Request  $request
      * @return \think\Response
      */
-    public function save(Request $request)
+    public function update(Request $request)
     {
-        //
+        if ($request->isAjax(true)){
+    
+            $data = $request->param();
+            //设置更新条件
+            $map = ['is_update' => $data['is_update']];
+            $res = SystemModel::update($data, $map);
+    
+            //返回信息
+            if (is_null($res)){
+                $status = 0;
+                $message = '更新失败，请检查';
+            }else {
+                $status = 1;
+                $message = '更新成功啦';
+            }
+    
+            return ['status' => $status, 'message' => $message];
+    
+        }
+    
     }
     /**
      * 显示 && 添加友链
@@ -104,35 +118,4 @@ class System extends Base
         $del ? $this->redirect('admin/system/linklist') : $this->error('Link Delete Error,Dear');
     }
     
-    /**
-     * 显示编辑资源表单页.
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-    /**
-     * 保存更新的资源
-     *
-     * @param  \think\Request  $request
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    /**
-     * 删除指定资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function delete($id)
-    {
-        //
-    }
 }
