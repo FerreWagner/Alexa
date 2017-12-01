@@ -13,9 +13,9 @@
                 <thead>
                     <tr>
                         <th>统计</th>
-                        <th>资讯库</th>
+                        <th>Article</th>
                         <th>图片库</th>
-                        <th>产品库</th>
+                        <th>Other</th>
                         <th>用户</th>
                         <th>管理员</th>
                     </tr>
@@ -103,8 +103,24 @@
                         <td>{$_SERVER['DOCUMENT_ROOT']}</td>
                     </tr>
                     <tr>
-                        <td>服务器脚本超时时间 </td>
-                        <td>30000秒</td>
+                        <td>脚本运行最大内存 </td>
+                        <td><?php echo get_cfg_var ("memory_limit")?get_cfg_var("memory_limit"):"无"?></td>
+                    </tr>
+                    <tr>
+                        <td>最大执行时间</td>
+                        <td><?php echo get_cfg_var("max_execution_time")."秒 ";?></td>
+                    </tr>
+                    <tr>
+                        <td>最大上传限制</td>
+                        <td><?php echo get_cfg_var ("upload_max_filesize")?get_cfg_var ("upload_max_filesize"):"不允许上传附件";?></td>
+                    </tr>
+                    <tr>
+                        <td>MYSQL数据库持续连接</td>
+                        <td><?php echo @get_cfg_var("mysql.allow_persistent")?"是 ":"否"; ?></td>
+                    </tr>
+                    <tr>
+                        <td>MYSQL最大连接数</td>
+                        <td><?php echo @get_cfg_var("mysql.max_links")==-1 ? "不限" : @get_cfg_var("mysql.max_links");?></td>
                     </tr>
                     <tr>
                         <td>服务器的语言种类 </td>
