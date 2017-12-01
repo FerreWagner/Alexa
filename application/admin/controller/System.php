@@ -13,44 +13,19 @@ class System extends Base
      *
      * @return \think\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->isPost()) {
+            $data = $request->param();
+            $res  = SystemModel::update($data, ['is_update'=> $data['is_update']]);
+            $res ? $this->redirect('admin/system/index') : $this->error('Config Update Error,Dear');
+        }
         $this->view->assign('system', SystemModel::get(1));
         
         return $this->view->fetch('system-set');
         
     }
-    
-    /**
-     * 保存更新的资源
-     *
-     * @param  \think\Request  $request
-     * @return \think\Response
-     */
-    public function update(Request $request)
-    {
-        if ($request->isAjax(true)){
-    
-            $data = $request->param();
-            //设置更新条件
-            $map = ['is_update' => $data['is_update']];
-            $res = SystemModel::update($data, $map);
-    
-            //返回信息
-            if (is_null($res)){
-                $status = 0;
-                $message = '更新失败，请检查';
-            }else {
-                $status = 1;
-                $message = '更新成功啦';
-            }
-    
-            return ['status' => $status, 'message' => $message];
-    
-        }
-    
-    }
+
     /**
      * 显示 && 添加友链
      *
