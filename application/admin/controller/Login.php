@@ -28,6 +28,9 @@ class Login extends Base
             if (!$res){
                 $this->error('Error,Dear');
             }elseif ($res[0]['password'] == sha1(md5($admin_data['password'].'alexa'))){
+                //admin data detail
+                db('admin')->where('username', $res[0]['username'])->setInc('count');
+                db('admin')->where('username', $res[0]['username'])->update(['lasttime' => date("Y-m-d H:i:s",time())]);
                 Session::set('user_name', $res[0]['username']);
                 Session::set('user_data', $res[0]);
                 return $this->redirect('admin/index/index');
