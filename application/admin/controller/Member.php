@@ -15,7 +15,7 @@ class Member extends Base
     public function index()
     {
         //
-        return $this->view->fetch('member_list');
+        return $this->view->fetch('member-list');
         
     }
 

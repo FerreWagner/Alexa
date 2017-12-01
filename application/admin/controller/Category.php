@@ -37,7 +37,7 @@ class Category extends Base
         }
         
         $this->view->assign(['cate' => $cate, 'cate_count' => $cate_count]);
-        return $this->view->fetch('category_list');
+        return $this->view->fetch('category-list');
     }
 
 
@@ -51,7 +51,7 @@ class Category extends Base
     {
         $cate = CateGoryModel::find($id);
         $this->view->assign('cate', $cate);
-        return $this->view->fetch('category_edit');
+        return $this->view->fetch('category-edit');
     }
 
     /**
