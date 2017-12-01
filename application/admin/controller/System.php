@@ -15,6 +15,7 @@ class System extends Base
      */
     public function index(Request $request)
     {
+        //config update
         if ($request->isPost()) {
             $data = $request->param();
             $res  = SystemModel::update($data, ['is_update'=> $data['is_update']]);
@@ -27,7 +28,7 @@ class System extends Base
     }
 
     /**
-     * 显示 && 添加友链
+     * view && add link
      *
      * @param  int  $id
      * @return \think\Response
@@ -35,7 +36,7 @@ class System extends Base
     public function linkList(Request $request)
     {
         if ($request->isPost()){
-            //验证表单
+            //validate form
             $validate = Loader::validate('Syetem');
             if (!$validate->scene('add')->check($request->param())){
                 $this->error($validate->getError());
@@ -77,10 +78,10 @@ class System extends Base
             if (!is_null($res)){
                 return redirect('system/linklist');
             }else {
-                return $this->error('更新失败', 'system/linkupdate');
+                return $this->error('Link Update Error,Dear', 'system/linkupdate');
             }
         }else {
-            return $this->error('false request');
+            return $this->error('False Request');
         }
     }
     
