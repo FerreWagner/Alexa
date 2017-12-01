@@ -76,12 +76,10 @@ class Category extends Base
 
     /**
      * 删除指定资源
-     *
-     * @param  int  $id
-     * @return \think\Response
      */
-    public function delete($id)
+    public function delete()
     {
-        //
+        $del = db('category')->delete(input('id'));
+        $del ? $this->redirect('admin/category/index') : $this->error('Link Delete Error,Dear');
     }
 }

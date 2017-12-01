@@ -65,8 +65,7 @@
 	                            <a title="编辑" href="{:url('admin/category/edit', array('id'=>$ca['id']))}" class="ml-5" style="text-decoration:none">
 	                                <i class="layui-icon">&#xe642;</i>
 	                            </a>
-	                            <a title="删除" href="javascript:;" onclick="cate_del(this,'1')" 
-	                            style="text-decoration:none">
+	                            <a title="删除" onclick="return confirm('你确定删除该栏目？')" href="{:url('admin/category/delete',['id' => $ca['id']])}" style="text-decoration:none">
 	                                <i class="layui-icon">&#xe640;</i>
 	                            </a>
 	                        </td>

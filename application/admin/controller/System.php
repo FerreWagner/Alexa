@@ -100,7 +100,8 @@ class System extends Base
      */
     public function linkDelete()
     {
-        
+        $del = db('link')->delete(input('id'));
+        $del ? $this->redirect('admin/system/linklist') : $this->error('Link Delete Error,Dear');
     }
     
     /**

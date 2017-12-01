@@ -77,8 +77,7 @@
                             <a title="编辑" href="{:url('system/linkedit', array('id'=>$link['id']))}" class="ml-5" style="text-decoration:none">
                                 <i class="layui-icon">&#xe642;</i>
                             </a>
-                            <a title="删除" href="javascript:;" onclick="link_del(this,'1')" 
-                            style="text-decoration:none">
+                            <a title="删除" onclick="return confirm('你确定删除该友链？')" href="{:url('admin/system/linkdelete',['id' => $link['id']])}" style="text-decoration:none">
                                 <i class="layui-icon">&#xe640;</i>
                             </a>
                         </td>
