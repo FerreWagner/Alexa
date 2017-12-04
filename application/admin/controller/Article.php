@@ -15,7 +15,7 @@ class Article extends Base
      */
     public function index()
     {
-        //
+        //list
         $article = ArticleModel::field(['id', 'title', 'cate', 'author', 'time', 'see'])->paginate(6);
         $this->view->assign('article', $article);
         return $this->view->fetch('article-list');
@@ -37,21 +37,12 @@ class Article extends Base
      * @param  \think\Request  $request
      * @return \think\Response
      */
-    public function save(Request $request)
+    public function add()
     {
         //
+        return $this->view->fetch('article-add');
     }
 
-    /**
-     * 显示指定的资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function read($id)
-    {
-        //
-    }
 
     /**
      * 显示编辑资源表单页.
