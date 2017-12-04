@@ -4,6 +4,7 @@ namespace app\admin\controller;
 
 use think\Request;
 use app\admin\common\Base;
+use app\admin\model\Article as ArticleModel;
 
 class Article extends Base
 {
@@ -15,7 +16,9 @@ class Article extends Base
     public function index()
     {
         //
-        return $this->view->fetch('article_list');
+        $article = ArticleModel::field(['id', 'title', 'cate', 'author', 'time', 'see'])->paginate(6);
+        $this->view->assign('article', $article);
+        return $this->view->fetch('article-list');
     }
 
     /**
