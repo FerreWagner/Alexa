@@ -4,7 +4,7 @@
 <script src="__STATIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
 <body>
         <div class="x-body">
-            <form class="layui-form layui-form-pane" action="{:url('admin/article/update')}" method="post" enctype="multipart/form-data">
+            <form class="layui-form layui-form-pane" action="" method="post" enctype="multipart/form-data">
                 <div class="layui-form-item">
                     <label for="L_title" class="layui-form-label">
                         标题
@@ -42,7 +42,7 @@
                         缩略图
                     </label>
                     <div class="layui-input-block">
-                        <input type="file" name="pic">
+                        <input type="file" name="thumb">
                         {if condition="$article['thumb'] neq ''"}
                         <img style="float:left;" src="{$article.thumb}" width="200">
                         {else /}

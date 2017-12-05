@@ -89,8 +89,7 @@
                                 <a title="编辑" href="{:url('admin/article/edit', ['id' => $art['id']])}" class="ml-5" style="text-decoration:none">
                                     <i class="layui-icon">&#xe642;</i>
                                 </a>
-                                <a title="删除" href="javascript:;" onclick="question_del(this,'1')"
-                                   style="text-decoration:none">
+                                <a title="删除" href="{:url('admin/article/delete', ['id' => $art['id']])}" style="text-decoration:none">
                                     <i class="layui-icon">&#xe640;</i>
                                 </a>
                             </td>
