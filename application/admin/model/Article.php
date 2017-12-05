@@ -1,7 +1,6 @@
 <?php
 namespace app\admin\model;
 use think\Model;
-use ferrewagner\ferreimgdetail\ferreImgDetail;
 
 class Article extends Model
 {
@@ -11,12 +10,18 @@ class Article extends Model
                 $_file = request()->file('pic');
                 $_info = $_file->move(ROOT_PATH . 'public' . DS . 'uploads');
                 if ($_info){    //如果上传成功
-                    $pic = $_SERVER['SERVER_NAME'] . DS .'uploads'.'/'.$_info->getSaveName();
-                    $ferreImg = new ferreImgDetail();
-                    
-                    $ferrePic = $ferreImg->cutImg($pic, 390, 490, 'alexa', 20, 'uploads/haha');
-                    echo $ferrePic;die;
-                    $_data['pic'] = $pic;
+                    //原图
+//                    $real_pic   = $_SERVER['SERVER_NAME'] . DS .'uploads'.'/'.$_info->getSaveName();
+                    $real_pic   = $_SERVER['DOCUMENT_ROOT'] . '/uploads/' . $_info->getSaveName();
+
+                    $detail_pic = 'uploads'.'/'.$_info->getSaveName();
+                    //图片压缩
+                    $ferreImg   = new \ferreImgDetail();
+                    $ferrePic   = $ferreImg->cutImg($detail_pic, 390, 490, 'alexa', 20, 'uploads/thumb');
+//                    $_data['pic']   = $real_pic;
+
+                    $_data['thumb'] = $_SERVER['SERVER_NAME'] . DS .'uploads/thumb/'.$ferrePic;
+                    @unlink($real_pic);
                 }
             }
         });
