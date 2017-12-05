@@ -4,8 +4,44 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "57e671135bb36db4ad31d6c7c2201667",
+    "content-hash": "2c2774f917e6cfbc18f3f1582df67ff8",
     "packages": [
+        {
+            "name": "ferrewagner/ferreimgdetail",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FerreWagner/FerreImgDetail.git",
+                "reference": "c0ab21bdedf86f543fa0679fc6f352ff79e7ee3c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/FerreWagner/FerreImgDetail/c0ab21bdedf86f543fa0679fc6f352ff79e7ee3c.zip",
+                "reference": "c0ab21bdedf86f543fa0679fc6f352ff79e7ee3c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "FerreWagner",
+                    "email": "1573646491@qq.com"
+                }
+            ],
+            "description": "PHP Library",
+            "keywords": [
+                "FerreWagner",
+                "Image Detail",
+                "PHP GD"
+            ],
+            "time": "2017-11-29T09:41:08+00:00"
+        },
         {
             "name": "kuange/qqconnect",
             "version": "0.0.1",
