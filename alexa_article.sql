@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-12-04 17:02:43
--- 服务器版本： 10.1.28-MariaDB
--- PHP Version: 7.1.11
+-- Generation Time: 2017-12-06 08:11:48
+-- 服务器版本： 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -36,22 +34,12 @@ CREATE TABLE `alexa_article` (
   `order` int(11) NOT NULL,
   `content` text NOT NULL,
   `thumb` text NOT NULL,
-  `pic` text NOT NULL,
   `desc` text NOT NULL,
   `see` int(11) NOT NULL,
   `keywords` text NOT NULL,
-  `time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `time` int(11) DEFAULT NULL,
+  `pic` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `alexa_article`
---
-
-INSERT INTO `alexa_article` (`id`, `author`, `title`, `cate`, `order`, `content`, `thumb`, `pic`, `desc`, `see`, `keywords`, `time`) VALUES
-(1, 'Ferre', 'Alexa的性格', '', 0, 'I DON\'T KNOW.', '111', '222', '333', 0, '444', '2017-12-04 15:25:59'),
-(2, 'Ferre', '1', '1', 0, '1', '1', '1', '1', 0, '1', '2017-12-04 15:25:59'),
-(3, 'Ferre', '2', '2', 0, '2', '2', '2', '2', 2, '2', '2017-12-04 05:25:59'),
-(4, 'Ferre', '32', '1', 0, '1', '1', '1', '1', 1, '1', '2017-12-04 16:00:00');
 
 --
 -- Indexes for dumped tables
@@ -71,9 +59,7 @@ ALTER TABLE `alexa_article`
 -- 使用表AUTO_INCREMENT `alexa_article`
 --
 ALTER TABLE `alexa_article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-COMMIT;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
