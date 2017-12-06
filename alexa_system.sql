@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-12-01 10:42:20
+-- Generation Time: 2017-12-06 09:54:41
 -- 服务器版本： 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -32,6 +32,7 @@ CREATE TABLE `alexa_system` (
   `title` text NOT NULL,
   `keywords` text NOT NULL,
   `desc` text NOT NULL,
+  `record` varchar(50) NOT NULL DEFAULT '',
   `is_update` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -39,8 +40,8 @@ CREATE TABLE `alexa_system` (
 -- 转存表中的数据 `alexa_system`
 --
 
-INSERT INTO `alexa_system` (`id`, `is_close`, `title`, `keywords`, `desc`, `is_update`) VALUES
-(1, 1, 'Alexa Ferre', '萨法1', 'About Alexa', 0);
+INSERT INTO `alexa_system` (`id`, `is_close`, `title`, `keywords`, `desc`, `record`, `is_update`) VALUES
+(1, 1, 'Alexa Ferre', '萨法', 'About Alexa', '蜀ICP备17036283号-2', 0);
 
 --
 -- Indexes for dumped tables
