@@ -10,10 +10,20 @@ class Base extends Controller
     public function _initialize()
     {
         parent::_initialize();
-        $request = Request::instance();
+        $request  = Request::instance();
         //get website switch
-        $config  = $this->getSystem();
+        $config   = $this->getSystem();
         $this->getStatus($request, $config);
+
+        //tourist data detail,find next time to detail
+        $tour_res = db('tourist')->where('ip', $_SERVER['REMOTE_ADDR'])->order('time', 'desc')->find();
+        if ($tour_res['time'] + 120 < time()){
+            db('tourist')->insert([
+                'ip'   => $_SERVER['REMOTE_ADDR'],
+                'time' => time(),
+            ]);
+        }
+
     }
 
 
