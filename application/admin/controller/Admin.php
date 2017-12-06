@@ -21,4 +21,14 @@ class Admin extends Base
         
     }
     
+    /**
+     * admin log data list
+     */
+    public function logList()
+    {
+        $admin_log = db('alog')->select();
+        $this->view->assign('alog', $admin_log);
+        return $this->view->fetch('admin-log');
+    }
+    
 }
