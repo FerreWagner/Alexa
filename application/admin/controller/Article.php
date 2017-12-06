@@ -24,15 +24,6 @@ class Article extends Base
         return $this->view->fetch('article-list');
     }
 
-    /**
-     * 显示创建资源表单页.
-     *
-     * @return \think\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * 保存新建的资源
@@ -71,22 +62,30 @@ class Article extends Base
      * @param  int  $id
      * @return \think\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        if ($request->isPost()){
+            $data = $request->param();
+            $validate = Loader::validate('Article');
+            if(!$validate->scene('edit')->check($data)){
+                $this->error($validate->getError());
+            }
+            $article = new ArticleModel;
+            $save=$article->update($data);
+            if($save){
+                $this->success('修改文章成功！',url('admin/article/index'));
+            }else{
+                $this->error('修改文章失败！');
+            }
+            return;
+        }
+        //cate data && article data
+        $cate    = db('category')->field(['id', 'catename'])->order('sort', 'asc')->select();
+        $article = db('article')->find($id);
+        $this->assign(['cate' => $cate, 'article' => $article]);
+        return $this->view->fetch('article-edit');
     }
 
-    /**
-     * 保存更新的资源
-     *
-     * @param  \think\Request  $request
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * 删除指定资源
@@ -96,6 +95,10 @@ class Article extends Base
      */
     public function delete($id)
     {
-        //
+        if(ArticleModel::destroy($id)){
+            $this->success('删除文章成功！',url('admin/article/index'));
+        }else{
+            $this->error('删除文章失败！');
+        }
     }
 }
