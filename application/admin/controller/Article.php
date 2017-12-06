@@ -18,6 +18,7 @@ class Article extends Base
     public function index()
     {
         //list
+        new \ferreImgDetail();
         $article = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->paginate(6);
         $this->view->assign('article', $article);
         return $this->view->fetch('article-list');
