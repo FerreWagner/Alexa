@@ -12,7 +12,7 @@ class Article extends Model
                 $_info = $_file->move(ROOT_PATH . 'public' . DS . 'uploads');
                 if ($_info){    //如果上传成功
                     $pic = $_SERVER['SERVER_NAME'] . DS .'uploads'.'/'.$_info->getSaveName();
-                    $ferreImg = new ferreImgDetail();
+                    $ferreImg = new \ferrewagner\ferreimgdetail\ferreImgDetail;
                     
                     $ferrePic = $ferreImg->cutImg($pic, 390, 490, 'alexa', 20, 'uploads/haha');
                     echo $ferrePic;die;

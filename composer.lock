@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c2774f917e6cfbc18f3f1582df67ff8",
+    "content-hash": "1b5cc87c884fc188a28722e6a27439b0",
     "packages": [
         {
             "name": "ferrewagner/ferreimgdetail",
