@@ -65,7 +65,7 @@
                             {$da.ip}
                         </td>
                         <td>
-                            {$da.time|date="Y-m-d H:m:s", ###}
+                            {$da.time|date="Y-m-d H:i:s", ###}
                         </td>
                         <td class="td-manage">
                             <a title="删除" onclick="return confirm('你确定删除该记录？')" href="{:url('admin/member/touristdelete',['id' => $da['id']])}" style="text-decoration:none">
