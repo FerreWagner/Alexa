@@ -145,7 +145,7 @@
 <div id="A1-main">
 
     <div id="wrapper-logo">
-	<a href="{:url('index/index/login')}"><div id="logo" class="shadow object" title="QQ登录"></div></a>
+	<a href="{:url('index/index/login')}"><div id="logo" class="shadow object" title="{if condition="empty($Think.cookie.alexa_qq_openid)"}QQ登录{else/}Welcome To Alexa,{$alexau.nickname}{/if}"></div></a>
 	</div>
     
     <div id="A1">
