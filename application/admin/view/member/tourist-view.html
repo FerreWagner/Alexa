@@ -1,12 +1,13 @@
 {include file='public/header' /}
 <link rel="stylesheet" href="__STATIC__/lib/bootstrap/css/bootstrap.css">
 
+
     <body>
         <div class="x-nav">
             <span class="layui-breadcrumb">
               <a><cite>首页</cite></a>
               <a><cite>会员管理</cite></a>
-              <a><cite>系统日志</cite></a>
+              <a><cite>等级管理</cite></a>
             </span>
             <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
         </div>
@@ -41,57 +42,43 @@
                             ID
                         </th>
                         <th>
-                            类型
+                            ip
                         </th>
                         <th>
-                            内容
+                            访问时间
                         </th>
                         <th>
-                            用户名
-                        </th>
-                        <th>
-                            客户端IP
-                        </th>
-                        <th>
-                            时间
+                            操作
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {volist name="alog" id="al"}
-                    
+                    {volist name="data" id="da"}
                     <tr>
                         <td>
                             <input type="checkbox" value="1" name="">
                         </td>
-                        <td {if condition="$al['type'] eq 0"}style="color: #de64fb;"{/if}>
-                            {$al.id}
+                        <td>
+                            {$da.id}
                         </td>
-                        <td {if condition="$al['type'] eq 0"}style="color: #de64fb;"{/if}>
-                            {$al.type}
+                        <td>
+                            {$da.ip}
                         </td>
-                        <td {if condition="$al['type'] eq 0"}style="color: #de64fb;"{/if}>
-                           {if condition="$al['type'] eq 1"}登陆成功{else/}<a style="text-decoration: none;color: #de64fb;">登陆失败</a>{/if}
+                        <td>
+                            {$da.time|date="Y-m-d H:m:s", ###}
                         </td>
-                        <td {if condition="$al['type'] eq 0"}style="color: #de64fb;"{/if}>
-                            {$al.name}
-                        </td>
-                        <td {if condition="$al['type'] eq 0"}style="color: #de64fb;"{/if}>
-                            {$al.ip}
-                        </td>
-                        <td {if condition="$al['type'] eq 0"}style="color: #de64fb;"{/if}>
-                             {$al.time|date="Y-m-d H:m:s",###}
+                        <td class="td-manage">
+                            <a title="删除" onclick="return confirm('你确定删除该记录？')" href="{:url('admin/member/touristdelete',['id' => $da['id']])}" style="text-decoration:none">
+                                <i class="layui-icon">&#xe640;</i>
+                            </a>
                         </td>
                     </tr>
-                    
                     {/volist}
                 </tbody>
             </table>
-            <div style="text-align: center">{$alog->render()}</div>
-
+            <div style="text-align: center">{$data->render()}</div>
         </div>
-                {include file='public/base_js' /}
-
+        {include file='public/base_js' /}
         <script>
             layui.use(['element','layer'], function(){
                 $ = layui.jquery;//jquery
@@ -110,8 +97,8 @@
                 });
              }
            
-            /*-删除*/
-            function log_del(obj,id){
+            /*浏览-删除*/
+            function view_del(obj,id){
                 layer.confirm('确认要删除吗？',function(index){
                     //发异步删除数据
                     $(obj).parents("tr").remove();

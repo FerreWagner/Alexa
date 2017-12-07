@@ -26,8 +26,8 @@ class Admin extends Base
      */
     public function logList()
     {
-        $admin_log = db('alog')->select();
-        $this->view->assign('alog', $admin_log);
+        $log_data = db('alog')->paginate(8);
+        $this->view->assign('alog', $log_data);
         return $this->view->fetch('admin-log');
     }
     

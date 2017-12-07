@@ -51,6 +51,19 @@ class Member extends Base
         //
     }
 
+    public function touristList()
+    {
+        $tour_data = db('tourist')->paginate(8);
+        $this->view->assign('data', $tour_data);
+        return $this->view->fetch('tourist-view');
+    }
+
+    public function touristDelete($id)
+    {
+        $res = db('tourist')->delete($id);
+        $res ? $this->redirect('admin/member/touristlist') : $this->error('Delete False,Dear');
+    }
+
     /**
      * 显示编辑资源表单页.
      *
