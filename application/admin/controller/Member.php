@@ -4,6 +4,7 @@ namespace app\admin\controller;
 
 use app\admin\common\Base;
 use think\Request;
+use app\admin\model\Member as MemberModel;
 
 class Member extends Base
 {
@@ -15,6 +16,12 @@ class Member extends Base
     public function index()
     {
         //
+        $data  = MemberModel::paginate(8);
+        $count = count($data);
+        $this->view->assign([
+            'data'  => $data,
+            'count' => $count,
+        ]);
         return $this->view->fetch('member-list');
         
     }
