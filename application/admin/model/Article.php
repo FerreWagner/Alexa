@@ -3,6 +3,7 @@ namespace app\admin\model;
 use think\Model;
 class Article extends Model
 {
+    
     protected static function init(){
         Article::event('before_insert', function($_data){
             if(@$_FILES['thumb']['tmp_name']){
