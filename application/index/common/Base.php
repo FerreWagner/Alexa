@@ -25,10 +25,12 @@ class Base extends Controller
             ]);
         }
         
-        if (Cookie::has('qq_accesstoken', 'alexa_') && Cookie::has('qq_openid', 'alexa_')){
-                $user_data = db('member')->where('openid', Cookie::get('qq_openid','alexa_'))->find();
-                if (!$user_data) $this->error('Your Data Have Not In DaaBase.');
-                $this->view->assign('alexau', $user_data);
+        if (Cookie::has('allow', 'alexa_') && Cookie::has('status', 'alexa_')){
+            $user_data = db('member')->where('figureurl_qq_3', substr(Cookie::get('status','alexa_'), 32))->find();
+            if (!$user_data) $this->error('Your Data Have Not In DataBase.');
+            if (!password_verify(substr(Cookie::get('status','alexa_'), 32), $user_data['openid'])) $this->error('Pls Do Not Attack,Your IP Already Rrecorded.');
+            $this->view->assign('alexau', $user_data);
+//             D1BF741A92528A25C5793B790FF7FB20
         }
 
     }
