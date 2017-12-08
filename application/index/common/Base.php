@@ -30,7 +30,6 @@ class Base extends Controller
             if (!$user_data) $this->error('Your Data Have Not In DataBase.');
             if (!password_verify(substr(Cookie::get('status','alexa_'), 32), $user_data['openid'])) $this->error('Pls Do Not Attack,Your IP Already Rrecorded.');
             $this->view->assign('alexau', $user_data);
-//             D1BF741A92528A25C5793B790FF7FB20
         }
 
     }

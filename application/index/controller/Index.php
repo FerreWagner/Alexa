@@ -39,6 +39,10 @@ class Index extends Base
                 
                 //detail qq data
                 array_splice($qq_user_info, 0, 3);
+                unset($qq_user_info['figureurl']);
+                unset($qq_user_info['figureurl_2']);
+                unset($qq_user_info['figureurl_qq_2']);
+                
                 $qq_user_info += [
                     'figureurl_qq_3' => $openid,
                     'time'           => time(), 
