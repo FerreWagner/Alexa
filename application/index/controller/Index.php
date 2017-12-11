@@ -9,8 +9,40 @@ class Index extends Base
 {
     public function index()
     {
+        $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->paginate(6);
+        $system    = db('system')->select();
+        $this->assign([
+            'article'   => $article,
+            'system'    => $system,
+        ]);
+        
         return $this->view->fetch('index');
     }
+    public function index2()
+    {
+        $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->paginate(6);
+        $use_art   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->select();
+        $system    = db('system')->select();
+        $this->assign([
+            'article'   => $article,
+            'system'    => $system,
+        ]);
+        
+        foreach ($use_art as $k => $v){
+            $content .=  $v['title'];
+            
+            if (($k + 1)%2 == 0){
+                $div = 'sss'.$content.'sss';
+                $content = '';
+            }
+        }
+        
+        die;
+        return $this->view->fetch('index2');
+    }
+    
+    
+    
     public function callback()
     {
         error_reporting(E_ERROR | E_PARSE);
@@ -60,8 +92,6 @@ class Index extends Base
             die('Cookie Not Exists.');
         }
 
-
-//        $this->success('登录成功', url('/'));
     }
     
     public function login()

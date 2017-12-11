@@ -1,0 +1,41 @@
+{volist name="article" id="art"}
+{if $i == 1 || $i == 2}
+{$art.title} {$i} <br />
+{elseif $i == 3 || $i == 4/}
+{$art.title} {$i} <br />
+{elseif $i == 5 || $i == 6/}
+{$art.title} {$i} <br />
+{/if}
+{/volist}
+
+{$article->render()}
+
+{volist name="article" id="art"}
+      	  <div id="A3-left/middle/middle">
+            <div id="wrapper-post3" class="text-part-A5">
+            	<a href=""><div id="A3-middle-image-3"><img src="__STATIC__/IMG/image3-01.jpg"  alt="Another post" title="Another post" class="grow"/></div></a>
+            
+            	<div id="wrapper-A3-middle-date-3">
+            		<div id="A3-middle-date-3">TIME</div>
+                	<div id="A3-middle-icone-3"></div>
+            	</div> 
+            	<ul>
+            		<li><div id="A3-middle-title-3"><a href="">TITLE</a></div></li>
+                </ul>  
+            	<div id="A3-middle-text-3">DESC</div>  
+            </div>
+            <div id="wrapper-post4" class="text-part-A5">
+            	<a href=""><div id="A3-middle-image-4"><img src="__STATIC__/IMG/image4-01.jpg"  alt="Another post" title="Another post" class="grayscale" /></div></a>
+            
+            	<div id="wrapper-A3-middle-date-4">
+            		<div id="A3-middle-date-4">TIME</div>
+                	<div id="A3-middle-icone-4"></div>
+            	</div> 
+            	<ul>
+            		<li><div id="A3-middle-title-4"><a href="">TITLE</a></div></li>
+                </ul> 
+            	<div id="A3-middle-text-4">DESC</div>  
+            </div>
+                    
+          </div>
+{/volist}
