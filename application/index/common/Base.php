@@ -31,6 +31,8 @@ class Base extends Controller
             if (!password_verify(substr(Cookie::get('status','alexa_'), 32), $user_data['openid'])) $this->error('Pls Do Not Attack,Your IP Already Rrecorded.');
             $this->view->assign('alexau', $user_data);
         }
+        
+        $this->headNav();
 
     }
 
@@ -54,5 +56,20 @@ class Base extends Controller
             //0 open;1 close
             if ($config->is_close == 1) die('<h1 style="font-family: Arial, Helvetica, sans-serif;margin-top: 100px;text-align:center;">Alexa Maintenance,Dear</h1>');
         }
+    }
+    
+
+    /**
+     * index data
+     */
+    public function headNav()
+    {
+        $post = db('article')->field('title')->order('time', 'desc')->limit(4)->select();
+        $cate = db('category')->select();
+    
+        $this->assign([
+            'post' => $post,
+            'cate' => $cate,
+        ]);
     }
 }

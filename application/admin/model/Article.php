@@ -17,7 +17,7 @@ class Article extends Model
                     //图片压缩
                     $ferreImg   = new \ferreImgDetail();
                     $ferrePath  = 'uploads/thumb';
-                    $ferrePic   = $ferreImg->cutImg($detail_pic, 390, 490, 'alexa', 20, $ferrePath);
+                    $ferrePic   = $ferreImg->cutImg($detail_pic, 570, 750, 'alexa', 20, $ferrePath);
 //                    $_data['pic']   = $real_pic;  //原设计为图片地址,已废弃
 //                    $_data['thumb'] = $_SERVER['SERVER_NAME'] . DS .'uploads/thumb/'.$ferrePic;   //带域名的缩略图地址
                     $_data['thumb'] = '/uploads/thumb/'.$ferrePic;

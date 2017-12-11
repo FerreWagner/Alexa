@@ -1,4 +1,27 @@
-{include file="public/header" /}
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title></title><!-- Behavioral Meta Data --><meta name="baidu-site-verification" content="UziZUzpg9x" /><meta name="apple-mobile-web-app-capable" content="yes"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> <link rel="icon" type="image/png" href="__STATIC__/IMG/small-logo-01.png" /> <link href="__STATIC__/CSS/spore-font.css" rel="stylesheet" /> <link href="__STATIC__/CSS/animate.css" rel="stylesheet" /> <link href="__STATIC__/CSS/spore-animate.css" rel="stylesheet" />
+<style>
+/* BODY*/html,body{height: 100%;margin:0;padding:0;}
+/*A1*/.blank{position:relative;width:100%;height:100%;z-index:50;background-color:#FFF;}
+#A0{background: url(__STATIC__/IMG/alexa.jpg) 50% 50% no-repeat;position:absolute;background-size: cover;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;left: 0;top: 0;right: 0;bottom: 0;z-index:1;}
+#A1-main{position:relative;width:100%;height:200px;z-index:1;}
+#A1{position:relative;width:100%;height:100%;z-index:1;}
+#A0-2{background-color:#101613;opacity:0.5;position:absolute;width:100%;height:100%;left: 0;top: 0;right: 0;bottom: 0;z-index:2;}
+#trame{background-image: <!-- url(__STATIC__/IMG/tram1e.svg) --> none;background-repeat:repeat;position:absolute;width:100%;height:100%;left: 0;top: 0;right: 0;bottom: 0;z-index:3;opacity:0.8;}
+#wrapper-logo{position:absolute;width:169px;height:45px;margin-left:-500px;left:50%;top:60px;z-index:11;overflow: hidden;opacity:0;}
+
+{include file='public/header' /}
+
+#wrapper-plus{background-image: url(__STATIC__/IMG/plus.svg);background-repeat:no-repeat;position:absolute;width:32px;height:32px;left:50%;margin-left:450px;z-index:5;top:67.5px;cursor:pointer;opacity:0;}
+/* TAB MENU / HEADER*/#main-wrapper-menu{position:relative;width:100%;height:0;z-index:10;background-color:#FFF;}
+#wrapper-menu{position:absolute;height:auto;width:100%;left:50%;margin-left:-50%;top:50%;margin-top:-20%;}
+.recent-post{position:relative;width:100%;height:auto;z-index:1;display:none;}
+#recent-post-title,#recent-post-1,#recent-post-2,#recent-post-3,#recent-post-4{position:relative;width:70%;left:50%;margin-left:-35%;-moz-osx-font-smoothing: grayscale;-webkit-font-smoothing: antialiased;text-align:center;font-size:17px;line-height:150%;color:#666;font-family: 'open_sanssemibold';letter-spacing:-1px;padding-bottom:10px;height:auto;}
+.category-post{position:relative;width:100%;height:auto;z-index:1;padding-top:15px;display:none;}
+#category-post-title,#category-post-1,#category-post-2,#category-post-3{position:relative;width:70%;left:50%;margin-left:-35%;-moz-osx-font-smoothing: grayscale;-webkit-font-smoothing: antialiased;text-align:center;font-size:17px;line-height:150%;color:#666;font-family: 'open_sanssemibold';letter-spacing:-1px;padding-bottom:10px;height:auto;}
+#line-category-post{position:relative;width:75px;height:1px;background-color:#CCC;left:50%;margin-left:-37.5px;margin-bottom:15px;}
+#wrapper-cross{background-image: url(__STATIC__/IMG/cross.svg);background-repeat:no-repeat;position:absolute;width:32px;height:32px;left:50%;margin-left:450px;z-index:11;bottom:10%;cursor:pointer;opacity:1;}
 
 /*A2*/#A2{position:relative;width:100%;height:auto;z-index:1;opacity:0;}
 #text-2{position:relative;background-color:transparent;width:550px;height:auto;top:50%;margin-top:50px;left:50%;margin-left:-275px;z-index:3;-moz-osx-font-smoothing: grayscale;-webkit-font-smoothing: antialiased;text-align:center;font-size:40px;line-height:150%;color:#444549;font-family: 'open_sansregular';letter-spacing:-1px;padding-top:50px;}
@@ -161,11 +184,11 @@
 
 <div id="A2">
         
-        <div id="text-2">Category : Images</div>
+        <div id="text-2">{$system.0.title}</div>
     
         <div id="wrapper-A2-date-1">
             		
-                <div id="A2-date-1">We'va found 6 articles published</div>
+                <div id="A2-date-1">We'va found {$article->total()} articles published</div>
                 <div id="A2-icone-eye-1"></div>
         </div> 
 </div>
@@ -176,7 +199,7 @@
 <div id="wrapper-A3" class="object">
     
     	<div id="A3-left">
-        	<!-- 每列两个,氛围三列为：A-3left/middle/right -->
+        	<!-- 每列两个,分为三列：A-3left/middle/right -->
             <div id="wrapper-post1" class="text-part-A5">
             	<a href="spore-post2.html"><div id="A3-left-image-1"><img src="__STATIC__/IMG/image1-01.jpg"  alt="post an image with animation" title="post an image with animation" class="grow"/></div></a>
             
@@ -189,7 +212,6 @@
             	</ul>
             	<div id="A3-left-text-1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</div>  
             </div>
-            
              <div id="wrapper-post2" class="text-part-A5">
             	<a href="spore-post3.html"><div id="A3-left-image-2"><img src="__STATIC__/IMG/image6-01.jpg"  alt="Auto-resized image" title="Auto-resized image" class="grow"/></div></a>
             
@@ -289,148 +311,7 @@
 
 <!-- PART 5 - SUB MENU AND SHORTCUTS -->
 <!-- 底部导航列表 -->
-<div id="A5"> 
- 
-	<div id="wrapper-A5">
-    
-        <div id="wrapper-part-left" class="text-part-A5">
-        	<div id="A5-left" class="wow flipInX" data-wow-offset="10">
-    			<div id="left-text-post"><strong>Our recent post</strong></div>
-            	<div id="left-line-post"></div>
-            	<div id="left-line2-post"></div>
-			<ul>	
-                <li><div id="left-text-post-1"><strong><a href="spore-post1.html">Post a youtube video</a></strong></div></li>
-				<li><div id="left-text-post-2"><strong><a href="spore-post2.html">Post an animated image</a></strong></div></li>
-				<li><div id="left-text-post-3"><strong><a href="spore-post5.html">Post featured image</a></strong></div></li>
-				<li><div id="left-text-post-4"><strong><a href="spore-post3.html">Auto-resized image</a></strong></div></li>
-        	</ul>
-            </div>
-        </div>
-        
-        <div id="wrapper-part-mid" class="text-part-A5">
-        	<div id="A5-middle" class="wow flipInX" data-wow-offset="10" data-wow-delay="0.2s">
-    			<div id="mid-text-post"><strong>Categories</strong></div>
-            	<div id="mid-line-post"></div>
-            	<div id="mid-line2-post"></div>
-			<ul>	
-                <li><div id="mid-text-post-1"><strong><a href="spore-cat-video.html">Video</a></strong></div></li>
-				<li><div id="mid-text-post-2"><strong><a href="spore-cat-hotpost.html">Hot articles</a></strong></div></li>
-				<li><div id="mid-text-post-3"><strong><a href="spore-cat-image.html">Image</a></strong></div></li>
-        	</ul>
-            </div>
-        </div>
-        
-        <div id="wrapper-part-right" class="text-part-A5">
-        	<div id="A5-right" class="wow flipInX" data-wow-offset="10" data-wow-delay="0.4s">
-    			<div id="right-text-post"><strong>Why will you chose my blog theme ?</strong></div>
-            	<div id="right-line-post"></div>
-            	<div id="right-line2-post"></div>
-			<ul>	
-                <li><div id="right-text-post-1"><strong><a href="">RWD - Responsive Web design</a></strong></div></li>
-				<li><div id="right-text-post-2"><strong><a href="#">New javascript effect and animations</a></strong></div></li>
-				<li><div id="right-text-post-3"><strong><a href="#">Extensible bloc adapted</a></strong></div></li>
-				<li><div id="right-text-post-4"><strong><a href="#">No need to modify the code</a></strong></div></li>
-           </ul>
-           </div>
-        </div>
-        
-    <div class="A5-calage"></div>
-	</div>
-    
-</div>
-<!-- 底部导航列表 -->
-
-
-<!-- PART 5 BIS - SUB MENU AND RELATED NUMBERS -->
-
-
-<!-- 底部网站统计列表 -->
-<div id="A5b"> 
- 
-	<div id="wrapper-A5b">
-    
-        <div id="wrapper-A5b-part-left">
-        	<div id="A5b-left" class="wow flipInX" data-wow-offset="10">
-    			<div id="left-A5b-text-post">14</div>
-            	<div id="left-A5b-line-post"></div>
-            	<div id="left-A5b-line2-post"></div>
-				<div id="left-A5b-text-post-1"><strong>Posts</strong></div>
-        	</div>
-        </div>
-        
-        <div id="wrapper-A5b-part-mid">
-        	<div id="A5b-middle" class="wow flipInX" data-wow-offset="10" data-wow-delay="0.2s">
-    			<div id="mid-A5b-text-post">235</div>
-            	<div id="mid-A5b-line-post"></div>
-            	<div id="mid-A5b-line2-post"></div>
-				<div id="mid-A5b-text-post-1"><strong>Likes</strong></div>
-        	</div>
-        </div>
-        
-        <div id="wrapper-A5b-part-right">
-        	<div id="A5b-right" class="wow flipInX" data-wow-offset="10" data-wow-delay="0.4s">
-    			<div id="right-A5b-text-post">6509</div>
-            	<div id="right-A5b-line-post"></div>
-            	<div id="right-A5b-line2-post"></div>
-				<div id="right-A5b-text-post-1"><strong>Views</strong></div>
-           </div>
-        </div>
-        
-    <div class="A5b-calage"></div>
-	</div>
-    
-</div>
-<!-- 底部网站统计列表 -->
-
-<!-- 底部联系方式列表 -->
-<div id="A6">
-
-<div id="wrapper-social" class="wow bounceInLeft" data-wow-offset="10">
-    
-    	<div id="main-behance">
-    		<div id="cadre-behance" class="object">
-        		<div id="behance" class="object">E</div>
-    		</div>
-        </div>
-        
-        <div id="main-dribbble">
-    		<div id="cadre-dribbble" class="object">
-      	  		<div id="dribbble" class="object">D</div>
-    		</div>
-        </div>
-
-		<div id="main-facebook">
-    		<div id="cadre-facebook" class="object">
-	        	<div id="facebook" class="object">F</div>
-        	</div>
-        </div>
- 
-		<div id="main-google">
-    		<div id="cadre-google" class="object">
-        		<div id="google" class="object">G</div>
-        	</div>
-        </div>
-        
-        <div id="main-linked">
-    		<div id="cadre-linked" class="object">
-        		<div id="linked" class="object">I</div>
-        	</div>
-        </div>
-        
-    </div>
-</div>
-<!-- 底部联系方式列表 -->
-
-<!-- 底部版权信息列表 -->
-<div id="A7">
-
-	<div id="wrapper-A7">
-    <div id="line-A7"></div>
-	<div id="copyright"><strong>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></strong></div>
-    </div>
-    
-</div>
-<!-- 底部版权信息列表 -->
+{include file='public/bottom' /}
 
 <!--SCRIPT-->
 {include file='public/script' /}
