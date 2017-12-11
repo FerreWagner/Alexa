@@ -69,4 +69,7 @@ class Index extends Base
         $qc = new QC();
         return redirect($qc->qq_login());   //访问qq登录页面
     }
+    
+
+    
 }
