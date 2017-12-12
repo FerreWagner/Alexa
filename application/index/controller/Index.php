@@ -21,7 +21,6 @@ class Index extends Base
     public function index2()
     {
         $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->paginate(6);
-        $use_art   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->select();
         $system    = db('system')->select();
         $this->assign([
             'article'   => $article,

@@ -43,7 +43,7 @@
 #A3-left-image-1,#A3-left-image-2,#A3-middle-image-3,#A3-middle-image-4,#A3-right-image-5,#A3-right-image-6{position:relative;width:100%;z-index:1;top:0;left:0;overflow:hidden;}
 #A3-left-image-1 img,#A3-left-image-2 img,#A3-middle-image-3 img,#A3-middle-image-4 img,#A3-right-image-5 img,#A3-right-image-6 img{width:100%;}
 /*A4*/#A4{position:relative;width:100%;height:70px;z-index:1;background-color:#FFF;padding-top:50px;padding-bottom:50px;}
-#wrapper-A4{position:absolute;width:600px;height:45px;margin-left:-300px;left:50%;top:50%;margin-top:-22.5px;}
+#wrapper-A4{position:absolute;width:600px;height:56px;margin-left:-300px;left:50%;top:50%;margin-top:-22.5px;}
 #line1-A4{position:absolute;background-color:#CCC;height:1px;top:0;width:100%;}
 #line2-A4{position:absolute;background-color:#CCC;height:1px;bottom:0;width:100%;}
 #A4-nextpage-1{position:absolute;width:150px;-moz-osx-font-smoothing: grayscale;-webkit-font-smoothing: antialiased;text-align:left;font-size:16px;height:70px;left:0;color:#474851;font-family: 'open_sanssemibold';top:50%;margin-top:-10px;}
@@ -152,6 +152,9 @@
 #main-wrapper-menu{display:none;}
 #text-2{margin-top:20px;}
 #wrapper-A2-date-1{padding-top:20px;padding-bottom:20px;width:200px;margin-left:-100px;}}
+.pagination{margin: 16px 0 0 0;display:inline-block;padding-left:0;border-radius:4px;font-size: 1.5em;}
+.pagination>li{display:inline;margin-right: 5px;color: #ccc;}
+#tppa li a{color: #c595e2;}
 </style>
 </head>
 <body>
@@ -197,95 +200,37 @@
 <!-- PART 3 - PORTFOLIO ARTICLES 3 GRID -->
 <!-- 文章列表 -->
 <div id="wrapper-A3" class="object">
-	<div id="A3-left">
-		<!-- 每列两个,分为三列：A-3left/middle/right -->
-
-		<div id="wrapper-post1" class="text-part-A5">
-			<a href=""><div id="A3-left-image-1"><img src="__STATIC__/IMG/image1-01.jpg"  alt="post an image with animation" title="post an image with animation" class="grow"/></div></a>
-
-			<div id="wrapper-A3-left-date-1">
-				<div id="A3-left-date-1">21 nov, 2016</div>
-				<div id="A3-left-icone-1"></div>
+	{volist name="article" id="art"}
+		{php}$total = count($article);{/php}
+		
+		{switch name="$i"}
+			{case value="1"}<div id="A3-left">{/case}
+			{case value="3"}<div id="A3-middle">{/case}
+			{case value="5"}<div id="A3-right">{/case}
+		{/switch}
+	
+			<div id="wrapper-post{$i}" class="text-part-A5">
+				<a href=""><div id="{if $i == 1}A3-left-image-1{elseif $i == 2/}A3-left-image-2{elseif $i == 3/}A3-middle-image-3{elseif $i == 4/}A3-middle-image-4{elseif $i == 5/}A3-right-image-5{elseif $i == 6/}A3-right-image-6{/if}"><img src="__STATIC__/IMG/image3-01.jpg"  alt="Another post" title="Another post" class="grow"/></div></a>
+	
+				<div id="{if $i == 1}wrapper-A3-left-date-1{elseif $i == 2/}wrapper-A3-left-date-2{elseif $i == 3/}wrapper-A3-middle-date-3{elseif $i == 4/}wrapper-A3-middle-date-4{elseif $i == 5/}wrapper-A3-right-date-5{elseif $i == 6/}wrapper-A3-right-date-6{/if}">
+					<div id="{if $i == 1}A3-left-date-1{elseif $i == 2/}A3-left-date-2{elseif $i == 3/}A3-middle-date-3{elseif $i == 4/}A3-middle-date-4{elseif $i == 5/}A3-right-date-5{elseif $i == 6/}A3-right-date-6{/if}">19 nov, 2016</div>
+					<div id="{if $i == 1}A3-left-icone-1{elseif $i == 2/}A3-left-icone-2{elseif $i == 3/}A3-middle-icone-3{elseif $i == 4/}A3-middle-icone-4{elseif $i == 5/}A3-right-icone-5{elseif $i == 6/}A3-right-icone-6{/if}"></div>
+				</div>
+				<ul>
+					<li><div id="{if $i == 1}A3-left-title-1{elseif $i == 2/}A3-left-title-2{elseif $i == 3/}A3-middle-title-3{elseif $i == 4/}A3-middle-title-4{elseif $i == 5/}A3-right-title-5{elseif $i == 6/}A3-right-title-6{/if}"><a href="">Another post</a></div></li>
+				</ul>
+				<div id="{if $i == 1}A3-left-text-1{elseif $i == 2/}A3-left-text-2{elseif $i == 3/}A3-middle-text-3{elseif $i == 4/}A3-middle-text-4{elseif $i == 5/}A3-middle-text-4{elseif $i == 6/}A3-middle-text-4{/if}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</div>
 			</div>
-			<ul>
-				<li><div id="A3-left-title-1"><a href="">Post an image with animation</a></div></li>
-			</ul>
-			<div id="A3-left-text-1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</div>
-		</div>
-		<div id="wrapper-post2" class="text-part-A5">
-			<a href=""><div id="A3-left-image-2"><img src="__STATIC__/IMG/image6-01.jpg"  alt="Auto-resized image" title="Auto-resized image" class="grow"/></div></a>
-
-			<div id="wrapper-A3-left-date-2">
-				<div id="A3-left-date-2">20 nov, 2016</div>
-				<div id="A3-left-icone-2"></div>
-			</div>
-			<ul>
-				<li><div id="A3-left-title-2"><a href="">Auto-resized image</a></div></li>
-			</ul>
-			<div id="A3-left-text-2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</div>
-		</div>
-
-	</div>
-
-	<div id="A3-middle">
-
-		<div id="wrapper-post3" class="text-part-A5">
-			<a href=""><div id="A3-middle-image-3"><img src="__STATIC__/IMG/image3-01.jpg"  alt="Another post" title="Another post" class="grow"/></div></a>
-
-			<div id="wrapper-A3-middle-date-3">
-				<div id="A3-middle-date-3">19 nov, 2016</div>
-				<div id="A3-middle-icone-3"></div>
-			</div>
-			<ul>
-				<li><div id="A3-middle-title-3"><a href="">Another post</a></div></li>
-			</ul>
-			<div id="A3-middle-text-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</div>
-		</div>
-
-		<div id="wrapper-post4" class="text-part-A5">
-			<a href=""><div id="A3-middle-image-4"><img src="__STATIC__/IMG/image4-01.jpg"  alt="Another post" title="Another post" class="grayscale" /></div></a>
-
-			<div id="wrapper-A3-middle-date-4">
-				<div id="A3-middle-date-4">18 nov, 2016</div>
-				<div id="A3-middle-icone-4"></div>
-			</div>
-			<ul>
-				<li><div id="A3-middle-title-4"><a href="">Another post</a></div></li>
-			</ul>
-			<div id="A3-middle-text-4">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</div>
-		</div>
-
-	</div>
-
-	<div id="A3-right">
-
-		<div id="wrapper-post5" class="text-part-A5">
-			<a href=""><div id="A3-right-image-5"><img src="__STATIC__/IMG/image5-01.jpg"  alt="Post with transition image" title="Post with transition image" class="grow" /></div></a>
-
-			<div id="wrapper-A3-right-date-5">
-				<div id="A3-right-date-5">15 nov, 2016</div>
-				<div id="A3-right-icone-5"></div>
-			</div>
-			<ul>
-				<li><div id="A3-right-title-5"><a href="">Post with transition image</a></div></li>
-			</ul>
-			<div id="A3-right-text-5">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</div>
-		</div>
-
-		<div id="wrapper-post6" class="text-part-A5">
-			<a href=""><div id="A3-right-image-5"><img src="__STATIC__/IMG/image2-01.jpg"  alt="Another post" title="Another post" class="grow"/></div></a>
-
-			<div id="wrapper-A3-right-date-6">
-				<div id="A3-right-date-6">14 nov, 2016</div>
-				<div id="A3-right-icone-6"></div>
-			</div>
-			<ul>
-				<li><div id="A3-right-title-6"><a href="">Another post</a></div></li>
-			</ul>
-			<div id="A3-right-text-6">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</div>
-		</div>
-
-	</div>
+		
+		{switch name="$i"}
+			{case value="2"}</div>{/case}
+			{case value="4"}</div>{/case}
+			{case value="6"}</div>{/case}
+		{/switch}
+	
+		{if $total%2 && $i == $total}</div>{/if}
+		
+	{/volist}
 
 
 
@@ -304,8 +249,10 @@
     <div id="line2-A4"></div>
     
     <ul>
-    <li><div id="A4-nextpage-1"><a href="index.html">&#171;&nbsp;&nbsp;Previous page</a></div></li>
-    <li><div id="A4-nextpage-2"><a href="spore-cat-video.html">Next page&nbsp;&nbsp;&#187;</a></div></li>
+    
+    <div id="tppa" style="text-align: center;">{$article->render()}</div>
+    <!-- <li><div id="A4-nextpage-1"><a href="index.html">&#171;&nbsp;&nbsp;Previous page</a></div></li>
+    <li><div id="A4-nextpage-2"><a href="spore-cat-video.html">Next page&nbsp;&nbsp;&#187;</a></div></li> -->
     </ul>
       
     </div>
