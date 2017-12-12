@@ -9,7 +9,12 @@ class Index extends Base
 {
     public function index()
     {
-        $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->paginate(6);
+        if (input('keywords')){
+            $map['catename'] = ['like','%'.input('keywords').'%'];
+            $article = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.order desc')->where($map)->paginate(6);
+        }else {
+            $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.order desc')->paginate(6);
+        }
         $system    = db('system')->select();
         $this->assign([
             'article'   => $article,
@@ -18,20 +23,6 @@ class Index extends Base
         
         return $this->view->fetch('index');
     }
-    public function index2()
-    {
-        $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->paginate(6);
-        $use_art   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->select();
-        $system    = db('system')->select();
-        $this->assign([
-            'article'   => $article,
-            'system'    => $system,
-        ]);
-        
-
-        return $this->view->fetch('index2');
-    }
-    
     
     
     public function callback()
