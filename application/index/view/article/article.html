@@ -36,7 +36,7 @@ html,body{
 
 
 #A0{
-	background: url(__STATIC__/IMG/gallery-in-a-page.jpg)  50% 50% no-repeat;
+	background: url(__STATIC__/IMG/alexa.jpg)  50% 50% no-repeat;
 	position:absolute;
     background-size: cover;
 	-webkit-background-size:cover;
@@ -1047,32 +1047,7 @@ input,textarea {width:258px;}
 <body>
 
 <!-- MENU TAB -->
-<div id="main-wrapper-menu">
-  <div id="wrapper-cross"></div>
-	<div id="wrapper-menu">
-	
-    <div class="recent-post text-part-menutab">
-        <ul>
-        <li><div id="recent-post-title">Our recent post</div></li>
-    	<li><div id="recent-post-1"><a href="spore-post1.html">Post a youtube video</a></div></li>
-		<li><div id="recent-post-2"><a href="spore-post2.html">Post an animated image</a></div></li>
-		<li><div id="recent-post-3"><a href="spore-post5.html">Post featured image</a></div></li>
-		<li><div id="recent-post-4"><a href="spore-post3.html">Auto-resized image</a></div></li>
-        </ul>
-    </div>
-    
-	<div class="category-post text-part-menutab">
-    	<div id="line-category-post"></div>
-        <ul>
-        <li><div id="category-post-title">Categories post</div></li>
-    	<li><div id="category-post-1"><a href="spore-cat-video.html">Video articles</a></div></li>
-		<li><div id="category-post-2"><a href="spore-cat-hotpost.html">Hot articles</a></div></li>
-		<li><div id="category-post-3"><a href="spore-cat-image.html">Images</a></div></li>
-        </ul>
-    </div>
-    
-    </div>
-</div>
+{include file='public/menu_tab' /}
 
 <!-- BOUTON MENU TAB -->
 
@@ -1099,11 +1074,11 @@ input,textarea {width:258px;}
 
 <div id="A2">
         
-        <div id="text-2">Post an image with animation</div>
+        <div id="text-2">{$article.title}</div>
     
         <div id="wrapper-A2-date-1">
             		
-                <div id="A2-date-1">21 nov, 2016</div>
+                <div id="A2-date-1">{$article.time|date="d M, Y", ###}</div>
                 <div id="A2-icone-1"></div>  
                 <div id="A2-icone-eye-1"></div>
         </div> 
@@ -1112,12 +1087,9 @@ input,textarea {width:258px;}
 
 <div id="wrapper-A3" class="object">
     
-    	<div id="A3-top">
-			<div id="A3-image"><img src="__STATIC__/IMG/image1-01.jpg"  alt="post an image with animation" title="post an image with animation" /></div>	
-        </div>
         
         <div id="A3-top-2" class="wow fadeInY" data-wow-offset="10">
-			<div id="A3-text-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>	
+			<div id="A3-text-1">{$article.content}</div>	
         </div>
 </div>
 
@@ -1131,8 +1103,8 @@ input,textarea {width:258px;}
     <div id="line2-A4"></div>
     
     <ul>  
-    <li><div id="A4-nextpage-1"><a href="index.html">&#171;&nbsp;&nbsp;Previous page</a></div></li>  
-    <li><div id="A4-nextpage-2"><a href="spore-post2.html">Next page&nbsp;&nbsp;&#187;</a></div></li>  
+    <li><div id="A4-nextpage-1"><a href="{:url('index/article/index', ['id' => $prev])}">&#171;&nbsp;&nbsp;Previous page</a></div></li>  
+    <li><div id="A4-nextpage-2"><a href="{:url('index/article/index', ['id' => $next])}">Next page&nbsp;&nbsp;&#187;</a></div></li>  
     </ul>
         
     </div>

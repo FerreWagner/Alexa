@@ -9,7 +9,7 @@ class Index extends Base
 {
     public function index()
     {
-        $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->paginate(6);
+        $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.order asc')->paginate(6);
         $system    = db('system')->select();
         $this->assign([
             'article'   => $article,
@@ -18,19 +18,6 @@ class Index extends Base
         
         return $this->view->fetch('index');
     }
-    public function index2()
-    {
-        $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->paginate(6);
-        $system    = db('system')->select();
-        $this->assign([
-            'article'   => $article,
-            'system'    => $system,
-        ]);
-        
-
-        return $this->view->fetch('index2');
-    }
-    
     
     
     public function callback()
