@@ -4,11 +4,14 @@
 
 	<meta charset="utf-8">
 
-	<title></title>
+	<title>{$article.title}</title>
 
 	<!-- Behavioral Meta Data -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name=”description” content="{$article.desc}">
+	<meta name=”keywords” content="{$article.keywords}">
+	<meta name="author" content="{$article.author}">
     <link rel="icon" type="image/png" href="__STATIC__/IMG/small-logo-01.png" />
     <link href="__STATIC__/CSS/spore-font.css" rel="stylesheet" />
     <link href="__STATIC__/CSS/animate.css" rel="stylesheet" />
@@ -1058,7 +1061,7 @@ input,textarea {width:258px;}
 <div id="A1-main">
 
     <div id="wrapper-logo">
-	<a href="index.html"><div id="logo" class="shadow object"></div></a>
+	<a href="{if condition="empty($Think.cookie.alexa_allow)"}{:url('index/index/login')}{else/}www.baidu.com{/if}"><div id="logo" class="shadow object" title="{if condition="empty($Think.cookie.alexa_allow)"}QQ登录{else/}Welcome To Alexa,{$alexau.nickname}{/if}"></div></a>
 	</div>
     
     <div id="A1">

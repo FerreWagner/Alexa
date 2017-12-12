@@ -12,6 +12,7 @@ class Base extends Controller
     {
         parent::_initialize();
         $request  = Request::instance();
+        
         //get website switch
         $config   = $this->getSystem();
         $this->getStatus($request, $config);
@@ -33,7 +34,11 @@ class Base extends Controller
         }
         
         $this->headNav();
-
+        $this->bottomNav();
+        $this->view->assign([
+            'config' => $config,
+        ]);
+        
     }
 
 
@@ -60,11 +65,11 @@ class Base extends Controller
     
 
     /**
-     * index data
+     * index head data
      */
     public function headNav()
     {
-        $post = db('article')->field('title')->order('time', 'desc')->limit(4)->select();
+        $post = db('article')->field(['id', 'title'])->order('time', 'desc')->limit(4)->select();
         $cate = db('category')->select();
     
         $this->assign([
@@ -72,4 +77,20 @@ class Base extends Controller
             'cate' => $cate,
         ]);
     }
+    
+    /**
+     * index bottom data
+     */
+    public function bottomNav()
+    {
+        $art_count  = db('article')->count('id');
+        $tour_count = db('tourist')->count('id');
+        $view_count = db('article')->sum('see');
+        $this->view->assign([
+            'art_count'  => $art_count,
+            'view_count' => $view_count,
+            'tour_count' => $tour_count,
+        ]);
+    }
+    
 }

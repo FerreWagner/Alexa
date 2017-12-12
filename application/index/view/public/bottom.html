@@ -9,10 +9,9 @@
             	<div id="left-line-post"></div>
             	<div id="left-line2-post"></div>
 			<ul>	
-                <li><div id="left-text-post-1"><strong><a href="spore-post1.html">Post a youtube video</a></strong></div></li>
-				<li><div id="left-text-post-2"><strong><a href="spore-post2.html">Post an animated image</a></strong></div></li>
-				<li><div id="left-text-post-3"><strong><a href="spore-post5.html">Post featured image</a></strong></div></li>
-				<li><div id="left-text-post-4"><strong><a href="spore-post3.html">Auto-resized image</a></strong></div></li>
+			{volist name="post" id="bot_po"}
+                <li><div id="left-text-post-{$i}"><strong><a href="{:url('index/article/index', ['id' => $bot_po['id']])}">{$bot_po.title}</a></strong></div></li>
+           	{/volist}
         	</ul>
             </div>
         </div>
@@ -22,10 +21,10 @@
     			<div id="mid-text-post"><strong>Categories</strong></div>
             	<div id="mid-line-post"></div>
             	<div id="mid-line2-post"></div>
-			<ul>	
-                <li><div id="mid-text-post-1"><strong><a href="spore-cat-video.html">Video</a></strong></div></li>
-				<li><div id="mid-text-post-2"><strong><a href="spore-cat-hotpost.html">Hot articles</a></strong></div></li>
-				<li><div id="mid-text-post-3"><strong><a href="spore-cat-image.html">Image</a></strong></div></li>
+			<ul>
+			{volist name="cate" id="bot_ca"}
+                <li><div id="mid-text-post-1"><strong><a href="">{$bot_ca.catename}</a></strong></div></li>
+            {/volist}
         	</ul>
             </div>
         </div>
@@ -56,7 +55,7 @@
     
         <div id="wrapper-A5b-part-left">
         	<div id="A5b-left" class="wow flipInX animated" data-wow-offset="10" style="visibility: visible; animation-name: flipInX;">
-    			<div id="left-A5b-text-post">14</div>
+    			<div id="left-A5b-text-post">{$article->total()}</div>
             	<div id="left-A5b-line-post"></div>
             	<div id="left-A5b-line2-post"></div>
 				<div id="left-A5b-text-post-1"><strong>Posts</strong></div>
@@ -65,7 +64,7 @@
         
         <div id="wrapper-A5b-part-mid">
         	<div id="A5b-middle" class="wow flipInX animated" data-wow-offset="10" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: flipInX;">
-    			<div id="mid-A5b-text-post">235</div>
+    			<div id="mid-A5b-text-post">{$view_count}</div>
             	<div id="mid-A5b-line-post"></div>
             	<div id="mid-A5b-line2-post"></div>
 				<div id="mid-A5b-text-post-1"><strong>Likes</strong></div>
@@ -74,7 +73,7 @@
         
         <div id="wrapper-A5b-part-right">
         	<div id="A5b-right" class="wow flipInX animated" data-wow-offset="10" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: flipInX;">
-    			<div id="right-A5b-text-post">6509</div>
+    			<div id="right-A5b-text-post">{$tour_count}</div>
             	<div id="right-A5b-line-post"></div>
             	<div id="right-A5b-line2-post"></div>
 				<div id="right-A5b-text-post-1"><strong>Views</strong></div>
