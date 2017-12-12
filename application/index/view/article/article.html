@@ -1131,13 +1131,14 @@ input,textarea {width:258px;}
     
     	<div id = "conteneur">
 	
- 			<form id="contact" method="post" action="#">
+ 			<form id="contact" method="post" action="{:url('admin/feedback/index')}">
 	 				<div id="er-message"></div>
     			<fieldset>
-					<p><input type="text" id="nom" name="nom" tabindex="1" placeholder="Name*"/></p>
+					<p><input type="text" id="nom" name="name" tabindex="1" placeholder="Name*"/></p>
 					<p><input type="text" id="email" name="email" tabindex="2" placeholder="Email*"/></p>
-					<p><input type="text" id="objet" name="objet" tabindex="3" placeholder="Website"/></p>
-					<p><textarea id="message" name="message" maxlength="500" placeholder="Comment" tabindex="4" cols="30" rows="8"></textarea></p>
+					<p><input type="text" id="objet" name="website" tabindex="3" placeholder="Website"/></p>
+					<p><textarea id="message" name="comment" maxlength="500" placeholder="Comment" tabindex="4" cols="30" rows="8"></textarea></p>
+					{:token()}
 				</fieldset>
  
 				<div style="text-align:center;"><input type="submit" name="envoi" value="Send" /></div>
