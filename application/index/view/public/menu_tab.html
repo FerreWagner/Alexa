@@ -16,7 +16,7 @@
         <ul>
         <li><div id="category-post-title">Categories</div></li>
     	{volist name="cate" id="ca"}
-    		<li><div id="category-post-1"><a href="spore-cat-video.html">{$ca.catename}</a></div></li>
+    		<li><div id="category-post-1"><a href="{:url('index/index/index')}?keywords={$ca.catename}">{$ca.catename}</a></div></li>
     	{/volist}
         </ul>
     </div>
