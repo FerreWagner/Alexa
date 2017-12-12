@@ -28,16 +28,7 @@ class Index extends Base
             'system'    => $system,
         ]);
         
-        foreach ($use_art as $k => $v){
-            $content .=  $v['title'];
-            
-            if (($k + 1)%2 == 0){
-                $div = 'sss'.$content.'sss';
-                $content = '';
-            }
-        }
-        
-        die;
+
         return $this->view->fetch('index2');
     }
     
