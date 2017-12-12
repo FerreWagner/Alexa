@@ -1,4 +1,6 @@
 {include file='public/header' /}
+<link rel="stylesheet" href="__STATIC__/lib/bootstrap/css/bootstrap.css">
+
     <body>
         <div class="x-nav">
             <span class="layui-breadcrumb">
@@ -14,19 +16,19 @@
                 <thead>
                     <tr>
                         <th>
-                            <input type="checkbox" name="" value="">
-                        </th>
-                        <th>
                             反馈编号ID
                         </th>
                         <th>
-                            反馈者
-                        </th>
-                        <th>
-                            反馈类型
+                            反馈IP
                         </th>
                         <th>
                             反馈邮箱
+                        </th>
+                        <th>
+                            反馈网站
+                        </th>
+                        <th>
+                            反馈信息
                         </th>
                         <th>
                             反馈时间
@@ -40,24 +42,25 @@
                     </tr>
                 </thead>
                 <tbody id="x-link">
+                    {volist name="feed_lst" id="feed"}
                     <tr>
                         <td>
-                            <input type="checkbox" value="1" name="">
+                            {$feed.id}
                         </td>
                         <td>
-                            1
-                        </td>
-                        <td>
-                            xuebingsi
+                            {$feed.ip}
                         </td>
                         <td >
-                            商品建议
+                            {$feed.email}
                         </td>
                         <td >
-                            113664000@qq.com
+                            {$feed.website}
                         </td>
                         <td >
-                            2017-01-10 16:14:34
+                            {$feed.comment}
+                        </td>
+                        <td >
+                            {$feed.time}
                         </td>
                         <td >
                             <span class="layui-btn layui-btn-normal layui-btn-mini">
@@ -65,20 +68,19 @@
                             </span>
                         </td>
                         <td class="td-manage">
-                            <a title="处理" href="javascript:;" onclick="feedback_edit('处理','feedback-edit.html','4','','510')"
-                            class="ml-5" style="text-decoration:none">
+                            <a title="处理" href="{:url('admin/feedback/edit', ['id' => $feed['id']])}" style="text-decoration:none">
                                 <i class="layui-icon">&#xe642;</i>
                             </a>
-                            <a title="删除" href="javascript:;" onclick="feedback_del(this,'1')"
-                            style="text-decoration:none">
+                            <a title="删除" onclick="return confirm('你确定删除该条反馈？')" href="{:url('admin/feedback/delete',['id' => $feed['id']])}" style="text-decoration:none">
                                 <i class="layui-icon">&#xe640;</i>
                             </a>
                         </td>
                     </tr>
+                    {/volist}
                 </tbody>
             </table>
 
-            <div id="page"></div>
+            <div style="text-align: center">{$feed_lst->render()}</div>
         </div>
         {include file='public/base_js' /}
 
@@ -93,33 +95,6 @@
 
           })
 
-
-
-              //以上模块根据需要引入
-
-            //批量删除提交
-             function delAll () {
-                layer.confirm('确认要删除吗？',function(index){
-                    //捉到所有被选中的，发异步进行删除
-                    layer.msg('删除成功', {icon: 1});
-                });
-             }
-
-
-
-            // 编辑
-            function feedback_edit (title,url,id,w,h) {
-                x_admin_show(title,url,w,h);
-            }
-
-            /*删除*/
-            function feedback_del(obj,id){
-                layer.confirm('确认要删除吗？',function(index){
-                    //发异步删除数据
-                    $(obj).parents("tr").remove();
-                    layer.msg('已删除!',{icon:1,time:1000});
-                });
-            }
             </script>
     </body>
 </html>

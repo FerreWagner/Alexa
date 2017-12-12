@@ -13,6 +13,7 @@ class Feedback extends Base
     {
         if ($request->isPost()){
             $data         = input('post.');
+            $data['ip']   = $_SERVER['REMOTE_ADDR'];
             $data['time'] = time();
             $validate     = Loader::validate('Feedback');
             if (!$validate->check($data)){
@@ -27,6 +28,23 @@ class Feedback extends Base
             }
 
         }
+
+        $feed_lst = FeedbackModel::paginate(6);
+        $this->view->assign('feed_lst', $feed_lst);
         return $this->view->fetch('feedback-list');
     }
+
+    public function edit($id)
+    {
+        $feed = FeedbackModel::find($id);
+        $this->view->assign('feed', $feed);
+        return $this->view->fetch('feedback-edit');
+    }
+
+    public function delete($id)
+    {
+        $res = FeedbackModel::destroy($id);
+        return $res ? $this->redirect('admin/feedback/index') : $this->error('Delete Feeback Error.');
+    }
+
 }
