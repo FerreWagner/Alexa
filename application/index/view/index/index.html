@@ -210,16 +210,16 @@
 		{/switch}
 	
 			<div id="wrapper-post{$i}" class="text-part-A5">
-				<a href=""><div id="{if $i == 1}A3-left-image-1{elseif $i == 2/}A3-left-image-2{elseif $i == 3/}A3-middle-image-3{elseif $i == 4/}A3-middle-image-4{elseif $i == 5/}A3-right-image-5{elseif $i == 6/}A3-right-image-6{/if}"><img src="__STATIC__/IMG/image3-01.jpg"  alt="Another post" title="Another post" class="grow"/></div></a>
+				<a href=""><div id="{if $i == 1}A3-left-image-1{elseif $i == 2/}A3-left-image-2{elseif $i == 3/}A3-middle-image-3{elseif $i == 4/}A3-middle-image-4{elseif $i == 5/}A3-right-image-5{elseif $i == 6/}A3-right-image-6{/if}"><img src="{$art.thumb}"  alt="Another post" title="Another post" class="grow"/></div></a>
 	
 				<div id="{if $i == 1}wrapper-A3-left-date-1{elseif $i == 2/}wrapper-A3-left-date-2{elseif $i == 3/}wrapper-A3-middle-date-3{elseif $i == 4/}wrapper-A3-middle-date-4{elseif $i == 5/}wrapper-A3-right-date-5{elseif $i == 6/}wrapper-A3-right-date-6{/if}">
-					<div id="{if $i == 1}A3-left-date-1{elseif $i == 2/}A3-left-date-2{elseif $i == 3/}A3-middle-date-3{elseif $i == 4/}A3-middle-date-4{elseif $i == 5/}A3-right-date-5{elseif $i == 6/}A3-right-date-6{/if}">19 nov, 2016</div>
+					<div id="{if $i == 1}A3-left-date-1{elseif $i == 2/}A3-left-date-2{elseif $i == 3/}A3-middle-date-3{elseif $i == 4/}A3-middle-date-4{elseif $i == 5/}A3-right-date-5{elseif $i == 6/}A3-right-date-6{/if}">{$art.time|date="Y-M-d H:i:s",###}</div>
 					<div id="{if $i == 1}A3-left-icone-1{elseif $i == 2/}A3-left-icone-2{elseif $i == 3/}A3-middle-icone-3{elseif $i == 4/}A3-middle-icone-4{elseif $i == 5/}A3-right-icone-5{elseif $i == 6/}A3-right-icone-6{/if}"></div>
 				</div>
 				<ul>
-					<li><div id="{if $i == 1}A3-left-title-1{elseif $i == 2/}A3-left-title-2{elseif $i == 3/}A3-middle-title-3{elseif $i == 4/}A3-middle-title-4{elseif $i == 5/}A3-right-title-5{elseif $i == 6/}A3-right-title-6{/if}"><a href="">Another post</a></div></li>
+					<li><div id="{if $i == 1}A3-left-title-1{elseif $i == 2/}A3-left-title-2{elseif $i == 3/}A3-middle-title-3{elseif $i == 4/}A3-middle-title-4{elseif $i == 5/}A3-right-title-5{elseif $i == 6/}A3-right-title-6{/if}"><a href="">{$art.title}</a></div></li>
 				</ul>
-				<div id="{if $i == 1}A3-left-text-1{elseif $i == 2/}A3-left-text-2{elseif $i == 3/}A3-middle-text-3{elseif $i == 4/}A3-middle-text-4{elseif $i == 5/}A3-middle-text-4{elseif $i == 6/}A3-middle-text-4{/if}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</div>
+				<div id="{if $i == 1}A3-left-text-1{elseif $i == 2/}A3-left-text-2{elseif $i == 3/}A3-middle-text-3{elseif $i == 4/}A3-middle-text-4{elseif $i == 5/}A3-middle-text-4{elseif $i == 6/}A3-middle-text-4{/if}">{$art.desc}</div>
 			</div>
 		
 		{switch name="$i"}
