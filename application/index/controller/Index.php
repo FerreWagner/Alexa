@@ -40,10 +40,17 @@ class Index extends Base
         // 待处理用户逻辑,最优加密+盐
         Cookie::init(['prefix'=>'alexa_','expire'=>86400,'path'=>'/']);
         Cookie::set('allow', password_hash($access_token, PASSWORD_DEFAULT, ['alexa']), 86400);
-        Cookie::set('status', md5($access_token).$openid, 86400);
+        Cookie::set('status', strtoupper(md5($access_token)).$openid, 86400);
         
         
         if (Cookie::has('allow', 'alexa_')){
+            //用户记录入库
+            $user_log = [
+                'openid'         => $openid,
+                'ip'             => $_SERVER['REMOTE_ADDR'],
+                'time'           => time(),
+            ];
+            $res = db('ulog')->insert($user_log);
             @$openid_find = db('member')->where('figureurl_qq_3', $openid)->find();
             if (!$openid_find){
                 //第一次注册即入库
@@ -67,7 +74,7 @@ class Index extends Base
                 $member_insert ? $this->redirect('index/index/index') : $this->error('Register Error.');
             }else {
                 //已注册过
-                $this->redirect('index/index/index');
+                $res ? $this->redirect('index/index/index') : $this->error('Log Error,Pls Connect Ferre.');
             }
             
         }else {

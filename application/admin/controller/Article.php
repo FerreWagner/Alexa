@@ -4,7 +4,6 @@ namespace app\admin\controller;
 
 use think\Request;
 use app\admin\common\Base;
-// use app\admin\model\Article as ArticleModel;
 use think\Loader;
 use app\admin\model\Article as ArticleModel;
 

@@ -5,12 +5,12 @@
     
         <div id="wrapper-part-left" class="text-part-A5">
         	<div id="A5-left" class="wow flipInX animated" data-wow-offset="10" style="visibility: visible; animation-name: flipInX;">
-    			<div id="left-text-post"><strong>Our recent post</strong></div>
+    			<div id="left-text-post"><strong>Most browsed post</strong></div>
             	<div id="left-line-post"></div>
             	<div id="left-line2-post"></div>
 			<ul>	
-			{volist name="post" id="bot_po"}
-                <li><div id="left-text-post-{$i}"><strong><a href="{:url('index/article/index', ['id' => $bot_po['id']])}">{$bot_po.title}</a></strong></div></li>
+			{volist name="most_view" id="most_view"}
+                <li><div id="left-text-post-{$i}"><strong><a href="{:url('index/article/index', ['id' => $most_view['id']])}">{$most_view.title}</a></strong></div></li>
            	{/volist}
         	</ul>
             </div>
@@ -31,12 +31,12 @@
         
         <div id="wrapper-part-right" class="text-part-A5">
         	<div id="A5-right" class="wow flipInX animated" data-wow-offset="10" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: flipInX;">
-    			<div id="right-text-post"><strong>Most browsed articles</strong></div>
+    			<div id="right-text-post"><strong>Link</strong></div>
             	<div id="right-line-post"></div>
             	<div id="right-line2-post"></div>
 			<ul>	
-			{volist name="most_view" id="most_view"}
-				<li><div id="right-text-post-{$i}"><strong><a href="{:url('index/article/index', ['id' => $most_view['id']])}" target="_blank">{$most_view.title}</a></strong></div></li>
+			{volist name="link" id="li"}
+				<li><div id="right-text-post-{$i}"><strong><a href="{$li.url}" target="_blank">{$li.name}</a></strong></div></li>
 			{/volist}
            </ul>
            </div>
@@ -91,25 +91,25 @@
     
     	<div id="main-behance">
     		<div id="cadre-behance" class="object">
-        		<div id="behance" class="object">E</div>
+        		<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1573646491&site=alexa.ferre.com&menu=yes" title="qq"><div id="behance" class="object">q</div></a>
     		</div>
         </div>
         
         <div id="main-dribbble">
     		<div id="cadre-dribbble" class="object">
-      	  		<div id="dribbble" class="object">D</div>
+      	  		<a target="_blank" href="https://weibo.com/3877828291/profile?rightmod=1&wvr=6&mod=personinfo" title="微博"><div id="dribbble" class="object">w</div></a>
     		</div>
         </div>
 
 		<div id="main-facebook">
     		<div id="cadre-facebook" class="object">
-	        	<div id="facebook" class="object">F</div>
+	        	<a target="_blank" href="https://github.com/FerreWagner" title="github"><div id="facebook" class="object">g</div></a>
         	</div>
         </div>
- 
+ <!-- 
 		<div id="main-google">
     		<div id="cadre-google" class="object">
-        		<div id="google" class="object">G</div>
+        		<div id="google" class="object">y</div>
         	</div>
         </div>
         
@@ -117,7 +117,7 @@
     		<div id="cadre-linked" class="object">
         		<div id="linked" class="object">I</div>
         	</div>
-        </div>
+        </div> -->
         
     </div>
 </div>
