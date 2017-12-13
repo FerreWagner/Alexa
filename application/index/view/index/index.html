@@ -164,7 +164,7 @@
 #wrapper-A2-date-1{padding-top:20px;padding-bottom:20px;width:200px;margin-left:-100px;}}
 .pagination{margin: 14px 0 0 0;display:inline-block;padding-left:0;border-radius:4px;font-size: 1.5em;}
 .pagination>li{display:inline;margin-right: 5px;color: #ccc;}
-#tppa li a{color: #c595e2;}
+#tppa li a{color: #89acb7;}
 </style>
 </head>
 <body>
@@ -221,16 +221,16 @@
 		{/switch}
 	
 			<div id="wrapper-post{$i}" class="text-part-A5">
-				<a href="{:url('index/article/index', ['id' => $art['id']])}" target="_blank"><div id="{if $i == 1}A3-left-image-1{elseif $i == 2/}A3-left-image-2{elseif $i == 3/}A3-middle-image-3{elseif $i == 4/}A3-middle-image-4{elseif $i == 5/}A3-right-image-5{elseif $i == 6/}A3-right-image-6{/if}"><img src="{$art.thumb}"  alt="Another post" title="Another post" class="grow"/></div></a>
+				<a href="{:url('index/article/index', ['id' => $art['id']])}" target="_blank"><div id="{if $i == 1}A3-left-image-1{elseif $i == 2/}A3-left-image-2{elseif $i == 3/}A3-middle-image-3{elseif $i == 4/}A3-middle-image-4{elseif $i == 5/}A3-right-image-5{elseif $i == 6/}A3-right-image-6{/if}"><img src="{$art.thumb}"  alt="{$art.desc}" title="{$art.desc}" class="grow"/></div></a>
 	
 				<div id="{if $i == 1}wrapper-A3-left-date-1{elseif $i == 2/}wrapper-A3-left-date-2{elseif $i == 3/}wrapper-A3-middle-date-3{elseif $i == 4/}wrapper-A3-middle-date-4{elseif $i == 5/}wrapper-A3-right-date-5{elseif $i == 6/}wrapper-A3-right-date-6{/if}">
-					<div id="{if $i == 1}A3-left-date-1{elseif $i == 2/}A3-left-date-2{elseif $i == 3/}A3-middle-date-3{elseif $i == 4/}A3-middle-date-4{elseif $i == 5/}A3-right-date-5{elseif $i == 6/}A3-right-date-6{/if}">{$art.time|date="Y-M-d H:i:s",###}</div>
+					<div id="{if $i == 1}A3-left-date-1{elseif $i == 2/}A3-left-date-2{elseif $i == 3/}A3-middle-date-3{elseif $i == 4/}A3-middle-date-4{elseif $i == 5/}A3-right-date-5{elseif $i == 6/}A3-right-date-6{/if}">{$art.time|date="Y-M-d",###}</div>
 					<div id="{if $i == 1}A3-left-icone-1{elseif $i == 2/}A3-left-icone-2{elseif $i == 3/}A3-middle-icone-3{elseif $i == 4/}A3-middle-icone-4{elseif $i == 5/}A3-right-icone-5{elseif $i == 6/}A3-right-icone-6{/if}"></div>
 				</div>
 				<ul>
 					<li><div id="{if $i == 1}A3-left-title-1{elseif $i == 2/}A3-left-title-2{elseif $i == 3/}A3-middle-title-3{elseif $i == 4/}A3-middle-title-4{elseif $i == 5/}A3-right-title-5{elseif $i == 6/}A3-right-title-6{/if}"><a href="{:url('index/article/index', ['id' => $art['id']])}" target="_blank">{$art.title}</a></div></li>
 				</ul>
-				<div id="{if $i == 1}A3-left-text-1{elseif $i == 2/}A3-left-text-2{elseif $i == 3/}A3-middle-text-3{elseif $i == 4/}A3-middle-text-4{elseif $i == 5/}A3-middle-text-4{elseif $i == 6/}A3-middle-text-4{/if}">{$art.desc}</div>
+				<div id="{if $i == 1}A3-left-text-1{elseif $i == 2/}A3-left-text-2{elseif $i == 3/}A3-middle-text-3{elseif $i == 4/}A3-middle-text-4{elseif $i == 5/}A3-middle-text-4{elseif $i == 6/}A3-middle-text-4{/if}"><a href="{:url('index/index/index')}?keywords={$art.catename}" style="color:#9c9c9c;font-family:open_sansregular;text-decoration: none;">{$art.catename}</a></div>
 			</div>
 		
 		{switch name="$i"}

@@ -5,12 +5,12 @@
     
         <div id="wrapper-part-left" class="text-part-A5">
         	<div id="A5-left" class="wow flipInX animated" data-wow-offset="10" style="visibility: visible; animation-name: flipInX;">
-    			<div id="left-text-post"><strong>Our recent post</strong></div>
+    			<div id="left-text-post"><strong>Most browsed post</strong></div>
             	<div id="left-line-post"></div>
             	<div id="left-line2-post"></div>
 			<ul>	
-			{volist name="post" id="bot_po"}
-                <li><div id="left-text-post-{$i}"><strong><a href="{:url('index/article/index', ['id' => $bot_po['id']])}">{$bot_po.title}</a></strong></div></li>
+			{volist name="most_view" id="most_view"}
+                <li><div id="left-text-post-{$i}"><strong><a href="{:url('index/article/index', ['id' => $most_view['id']])}">{$most_view.title}</a></strong></div></li>
            	{/volist}
         	</ul>
             </div>
@@ -31,12 +31,12 @@
         
         <div id="wrapper-part-right" class="text-part-A5">
         	<div id="A5-right" class="wow flipInX animated" data-wow-offset="10" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: flipInX;">
-    			<div id="right-text-post"><strong>Most browsed articles</strong></div>
+    			<div id="right-text-post"><strong>Link</strong></div>
             	<div id="right-line-post"></div>
             	<div id="right-line2-post"></div>
 			<ul>	
-			{volist name="most_view" id="most_view"}
-				<li><div id="right-text-post-{$i}"><strong><a href="{:url('index/article/index', ['id' => $most_view['id']])}" target="_blank">{$most_view.title}</a></strong></div></li>
+			{volist name="link" id="li"}
+				<li><div id="right-text-post-{$i}"><strong><a href="{$li.url}" target="_blank">{$li.name}</a></strong></div></li>
 			{/volist}
            </ul>
            </div>

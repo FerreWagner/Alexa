@@ -7,6 +7,8 @@ class Article extends Base
 {
     public function index()
     {
+        db('article')->where('id', input('id'))->setInc('see'); //article view
+        
         $article = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->find(input('id'));
         $prev    = db('article')->field('id')->order('order', 'desc')->where('order', '<', $article['order'])->limit(1)->find();
         $next    = db('article')->field('id')->order('order', 'asc')->where('order', '>', $article['order'])->limit(1)->find();

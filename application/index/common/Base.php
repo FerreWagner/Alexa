@@ -87,11 +87,13 @@ class Base extends Controller
         $tour_count = db('tourist')->count('id');
         $view_count = db('article')->sum('see');
         $most_view  = db('article')->field(['id', 'title'])->order('see', 'desc')->limit(4)->select();
+        $link       = db('link')->order('sort', 'desc')->select();
         $this->view->assign([
             'art_count'  => $art_count,
             'view_count' => $view_count,
             'tour_count' => $tour_count,
             'most_view'  => $most_view,
+            'link'       => $link,
         ]);
     }
     
