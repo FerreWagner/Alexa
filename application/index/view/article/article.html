@@ -251,7 +251,11 @@ html,body{
     font-family: 'open_sansregular';
 	letter-spacing:-1px;
 	padding-top:50px;
+/**
+ * 原为padding-top:50px;margin-top:50px;
+ */	
 }
+
 
 
 
@@ -1076,15 +1080,15 @@ input,textarea {width:258px;}
 </div>
 
 <div id="A2">
-        
-        <div id="text-2">{$article.title}</div>
-    
+        <div id="text-2">{$article.title}<span style="margin-left: 30px;font-family: '微软雅黑';font-size:18px;line-height:160%;color:#c5c9d8;"><a href="{:url('index/index/index')}?keywords={$article.catename}" style="color: #c5c9d8;text-decoration: none;">{$article.catename}</a></span></div>
+    <div style="text-align: center;margin-top: 25px;font-family: 'open_sansbold';"><a href="{:url('index/index/index')}" style="text-decoration: none;color :#C6C6C6;">Home</a></div>
         <div id="wrapper-A2-date-1">
-            		
+           		
                 <div id="A2-date-1">{$article.time|date="d M, Y", ###}</div>
                 <div id="A2-icone-1"></div>  
                 <div id="A2-icone-eye-1"></div>
         </div> 
+        
 </div>
     
 
