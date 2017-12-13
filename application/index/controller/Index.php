@@ -40,7 +40,7 @@ class Index extends Base
         // 待处理用户逻辑,最优加密+盐
         Cookie::init(['prefix'=>'alexa_','expire'=>86400,'path'=>'/']);
         Cookie::set('allow', password_hash($access_token, PASSWORD_DEFAULT, ['alexa']), 86400);
-        Cookie::set('status', md5($access_token).$openid, 86400);
+        Cookie::set('status', strtoupper(md5($access_token)).$openid, 86400);
         
         
         if (Cookie::has('allow', 'alexa_')){

@@ -181,7 +181,7 @@
 <div id="A1-main">
 
     <div id="wrapper-logo">
-	<a href="{if condition="empty($Think.cookie.alexa_allow)"}{:url('index/index/login')}{else/}{/if}"><div id="logo" class="shadow object" title="{if condition="empty($Think.cookie.alexa_allow)"}QQ登录{else/}Welcome To Alexa,{$alexau.nickname}{/if}"></div></a>
+	<a href="{if condition="empty($Think.cookie.alexa_allow) || empty($Think.cookie.alexa_status)"}{:url('index/index/login')}{else/}{/if}"><div id="logo" class="shadow object" title="{if condition="empty($Think.cookie.alexa_allow) || empty($Think.cookie.alexa_status)"}QQ登录{else/}Welcome To Alexa,{$alexau.nickname}{/if}"></div></a>
 	</div>
 	
     
