@@ -67,7 +67,13 @@ class Index extends Base
                 $member_insert ? $this->redirect('index/index/index') : $this->error('Register Error.');
             }else {
                 //已注册过
-                $this->redirect('index/index/index');
+                $user_log = [
+                    'openid'         => $openid, 
+                    'ip'             => $_SERVER['REMOTE_ADDR'], 
+                    'time'           => time(),
+                ];
+                $res = db('ulog')->insert($user_log);
+                $res ? $this->redirect('index/index/index') : $this->error('Log Error,Pls Connect Ferre.');
             }
             
         }else {
