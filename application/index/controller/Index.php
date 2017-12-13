@@ -44,6 +44,13 @@ class Index extends Base
         
         
         if (Cookie::has('allow', 'alexa_')){
+            //用户记录入库
+            $user_log = [
+                'openid'         => $openid,
+                'ip'             => $_SERVER['REMOTE_ADDR'],
+                'time'           => time(),
+            ];
+            $res = db('ulog')->insert($user_log);
             @$openid_find = db('member')->where('figureurl_qq_3', $openid)->find();
             if (!$openid_find){
                 //第一次注册即入库
@@ -67,12 +74,6 @@ class Index extends Base
                 $member_insert ? $this->redirect('index/index/index') : $this->error('Register Error.');
             }else {
                 //已注册过
-                $user_log = [
-                    'openid'         => $openid, 
-                    'ip'             => $_SERVER['REMOTE_ADDR'], 
-                    'time'           => time(),
-                ];
-                $res = db('ulog')->insert($user_log);
                 $res ? $this->redirect('index/index/index') : $this->error('Log Error,Pls Connect Ferre.');
             }
             

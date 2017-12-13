@@ -181,7 +181,7 @@
 <div id="A1-main">
 
     <div id="wrapper-logo">
-	<a href="{if condition="empty($Think.cookie.alexa_allow) || empty($Think.cookie.alexa_status)"}{:url('index/index/login')}{else/}{:url('index/ulog/index')}{/if}"><div id="logo" class="shadow object" title="{if condition="empty($Think.cookie.alexa_allow) || empty($Think.cookie.alexa_status)"}QQ登录{else/}Welcome To Alexa,{$alexau.nickname}{/if}"></div></a>
+	<a href="{if condition="empty($Think.cookie.alexa_allow) || empty($Think.cookie.alexa_status)"}{:url('index/index/login')}{else/}{/if}"><div id="logo" class="shadow object" title="{if condition="empty($Think.cookie.alexa_allow) || empty($Think.cookie.alexa_status)"}QQ登录{else/}Welcome To Alexa,{$alexau.nickname}{/if}"></div></a>
 	</div>
 	
     
@@ -198,51 +198,44 @@
 
 <div id="A2">
         
-        <div id="text-2">{$system.0.title}</div>
+        <div id="text-2">My Data</div>
     
         <div id="wrapper-A2-date-1">
             		
-                <div id="A2-date-1">We'va found {$article->total()} articles published</div>
+                <div id="A2-date-1">Welcome To Alexa. <a href="{:url('index/index/index')}" style="color:#89acb7;text-decoration: none;">Home</a></div>
                 <div id="A2-icone-eye-1"></div>
         </div> 
 </div>
-    
+
 
 <!-- PART 3 - PORTFOLIO ARTICLES 3 GRID -->
 <!-- 文章列表 -->
 <div id="wrapper-A3" class="object">
-	{volist name="article" id="art"}
-		{php}$total = count($article);{/php}
-		
-		{switch name="$i"}
-			{case value="1"}<div id="A3-left">{/case}
-			{case value="3"}<div id="A3-middle">{/case}
-			{case value="5"}<div id="A3-right">{/case}
-		{/switch}
-	
-			<div id="wrapper-post{$i}" class="text-part-A5">
-				<a href="{:url('index/article/index', ['id' => $art['id']])}" target="_blank"><div id="{if $i == 1}A3-left-image-1{elseif $i == 2/}A3-left-image-2{elseif $i == 3/}A3-middle-image-3{elseif $i == 4/}A3-middle-image-4{elseif $i == 5/}A3-right-image-5{elseif $i == 6/}A3-right-image-6{/if}"><img src="{$art.thumb}"  alt="Another post" title="Another post" class="grow"/></div></a>
-	
-				<div id="{if $i == 1}wrapper-A3-left-date-1{elseif $i == 2/}wrapper-A3-left-date-2{elseif $i == 3/}wrapper-A3-middle-date-3{elseif $i == 4/}wrapper-A3-middle-date-4{elseif $i == 5/}wrapper-A3-right-date-5{elseif $i == 6/}wrapper-A3-right-date-6{/if}">
-					<div id="{if $i == 1}A3-left-date-1{elseif $i == 2/}A3-left-date-2{elseif $i == 3/}A3-middle-date-3{elseif $i == 4/}A3-middle-date-4{elseif $i == 5/}A3-right-date-5{elseif $i == 6/}A3-right-date-6{/if}">{$art.time|date="Y-M-d H:i:s",###}</div>
-					<div id="{if $i == 1}A3-left-icone-1{elseif $i == 2/}A3-left-icone-2{elseif $i == 3/}A3-middle-icone-3{elseif $i == 4/}A3-middle-icone-4{elseif $i == 5/}A3-right-icone-5{elseif $i == 6/}A3-right-icone-6{/if}"></div>
-				</div>
-				<ul>
-					<li><div id="{if $i == 1}A3-left-title-1{elseif $i == 2/}A3-left-title-2{elseif $i == 3/}A3-middle-title-3{elseif $i == 4/}A3-middle-title-4{elseif $i == 5/}A3-right-title-5{elseif $i == 6/}A3-right-title-6{/if}"><a href="{:url('index/article/index', ['id' => $art['id']])}" target="_blank">{$art.title}</a></div></li>
-				</ul>
-				<div id="{if $i == 1}A3-left-text-1{elseif $i == 2/}A3-left-text-2{elseif $i == 3/}A3-middle-text-3{elseif $i == 4/}A3-middle-text-4{elseif $i == 5/}A3-middle-text-4{elseif $i == 6/}A3-middle-text-4{/if}">{$art.desc}</div>
-			</div>
-		
-		{switch name="$i"}
-			{case value="2"}</div>{/case}
-			{case value="4"}</div>{/case}
-			{case value="6"}</div>{/case}
-		{/switch}
-	
-		{if $total%2 && $i == $total}</div>{/if}
-		
-	{/volist}
+<div id="A4b" class="object">
 
+	<div id="wrapper-A4b">
+    
+    	<div id="conteneur" style="font-family:open_sanssemibold;font-size:1pc;color:#666;">
+	
+	 				<div id="er-message"></div>
+	 				我的名字:
+					<p><input value="{$data.nickname}" style="font-family:open_sanssemibold;font-size:1pc;color:#948ec1;width:578px;height:40px;padding:5px 10px 0 10px;margin:0 0 20px 0;background:#fff;border:1px solid #ccc;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;outline:0;" type="text" tabindex="1" disabled="disabled""></p>
+					我的头像:
+					<p><img src="{$data.figureurl_qq_1}" title="Alexa" /></p>
+					注册时间:
+					<p><input value="{$data.time|date="Y-m-d H:i:s", ###}" style="font-family:open_sanssemibold;font-size:1pc;color:#948ec1;width:578px;height:40px;padding:5px 10px 0 10px;margin:0 0 20px 0;background:#fff;border:1px solid #ccc;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;outline:0;" type="text" tabindex="3" disabled="disabled""></p>
+    				注册IP:
+    				<p><input value="{$data.ip}" style="font-family:open_sanssemibold;font-size:1pc;color:#948ec1;width:578px;height:40px;padding:5px 10px 0 10px;margin:0 0 20px 0;background:#fff;border:1px solid #ccc;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;outline:0;" type="text" tabindex="3" disabled="disabled""></p>
+    				最后登录IP:
+    				<p><input value="{$log.ip}" style="font-family:open_sanssemibold;font-size:1pc;color:#948ec1;width:578px;height:40px;padding:5px 10px 0 10px;margin:0 0 20px 0;background:#fff;border:1px solid #ccc;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;outline:0;" type="text" tabindex="3" disabled="disabled""></p>
+    				最后登录时间:
+    				<p><input value="{$log.time}" style="font-family:open_sanssemibold;font-size:1pc;color:#948ec1;width:578px;height:40px;padding:5px 10px 0 10px;margin:0 0 20px 0;background:#fff;border:1px solid #ccc;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;outline:0;" type="text" tabindex="3" disabled="disabled""></p>
+    				我们不会公开您的个人数据,当然如果您不信任我们,可以在<a href="https://connect.qq.com/manage.html#/appauth/user">QQ互联</a>取消对Alexa的授权，感谢您的信任.
+    	</div>
+        
+    </div>
+
+</div>
 
 
 
@@ -256,12 +249,11 @@
 
 	<div id="wrapper-A4" class="text-part-A5">
     	
-    <div id="line1-A4"></div>
-    <div id="line2-A4"></div>
+    <!-- <div id="line1-A4"></div>
+    <div id="line2-A4"></div> -->
     
     <ul>
     
-    <div id="tppa" style="text-align: center;">{if condition="count($article) < 6"}<li><a style="margin: 14px 0 0 0;display:inline-block;padding-left:0;border-radius:4px;font-size: 1.5em;">1</a></li>{/if}{$article->render()}</div>
     <!-- <li><div id="A4-nextpage-1"><a href="index.html">&#171;&nbsp;&nbsp;Previous page</a></div></li>
     <li><div id="A4-nextpage-2"><a href="spore-cat-video.html">Next page&nbsp;&nbsp;&#187;</a></div></li> -->
     </ul>
