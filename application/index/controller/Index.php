@@ -38,9 +38,9 @@ class Index extends Base
         
         //cookie时长一定要比accesstoken过期时长更短
         // 待处理用户逻辑,最优加密+盐
-        Cookie::init(['prefix'=>'alexa_','expire'=>86400,'path'=>'/']);
-        Cookie::set('allow', password_hash($access_token, PASSWORD_DEFAULT, ['alexa']), 86400);
-        Cookie::set('status', strtoupper(md5($access_token)).$openid, 86400);
+        Cookie::init(['prefix'=>'alexa_','expire'=>864000,'path'=>'/']);
+        Cookie::set('allow', password_hash($access_token, PASSWORD_DEFAULT, ['alexa']), 864000);
+        Cookie::set('status', strtoupper(md5($access_token)).$openid, 864000);
         
         
         if (Cookie::has('allow', 'alexa_')){
