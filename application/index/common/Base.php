@@ -17,14 +17,20 @@ class Base extends Controller
         $config   = $this->getSystem();
         $this->getStatus($request, $config);
 
+        if (!Cookie::has('token', 'alexa_')){
+            Cookie::set('alexa_token', password_hash($_SERVER['REMOTE_ADDR'], PASSWORD_DEFAULT, ['alexa']), 2592000);
+        }
+        
         //tourist data detail,find next time to detail
-        $tour_res = db('tourist')->where('ip', $_SERVER['REMOTE_ADDR'])->order('time', 'desc')->find();
-        if ($tour_res['time'] + 120 < time()){
+        $tour_res = db('tourist')->where('ip', $_SERVER['REMOTE_ADDR'])->find();
+        
+        if (!$tour_res){
             db('tourist')->insert([
                 'ip'   => $_SERVER['REMOTE_ADDR'],
                 'time' => time(),
             ]);
         }
+        
         
         if (Cookie::has('allow', 'alexa_') && Cookie::has('status', 'alexa_')){
             $user_data = db('member')->where('figureurl_qq_3', substr(Cookie::get('status','alexa_'), 32))->find();
@@ -88,10 +94,11 @@ class Base extends Controller
         $view_count = db('article')->sum('see');
         $most_view  = db('article')->field(['id', 'title'])->order('see', 'desc')->limit(4)->select();
         $link       = db('link')->order('sort', 'desc')->select();
+        
         $this->view->assign([
             'art_count'  => $art_count,
             'view_count' => $view_count,
-            'tour_count' => $tour_count,
+            'tour_count' => $tour_count + 428,
             'most_view'  => $most_view,
             'link'       => $link,
         ]);
