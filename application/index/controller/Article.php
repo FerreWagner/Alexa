@@ -50,43 +50,43 @@ class Article extends Base
         switch ($_SERVER['HTTP_USER_AGENT'])
         {
             case null:
-                return '机器人';
+                return 'machine';
                 break;
                 
             case false !== strpos($_SERVER['HTTP_USER_AGENT'],'MSIE 9.0'):
-                return 'Internet Explorer 9.0';
+                return 'ie9';
                 break;
                 
             case false !== strpos($_SERVER['HTTP_USER_AGENT'],'MSIE 8.0'):
-                return 'Internet Explorer 8.0';
+                return 'ie8';
                 break;
                 
             case false !== strpos($_SERVER['HTTP_USER_AGENT'],'MSIE 7.0'):
-                return 'Internet Explorer 7.0';
+                return 'ie7';
                 break;
                 
             case false !== strpos($_SERVER['HTTP_USER_AGENT'],'MSIE 6.0'):
-                return 'Internet Explorer 6.0';
+                return 'ie6';
                 break;
                 
             case false !== strpos($_SERVER['HTTP_USER_AGENT'],'Firefox'):
-                return 'Firefox';
+                return 'fox';
                 break;
                 
             case false !== strpos($_SERVER['HTTP_USER_AGENT'],'Chrome'):
-                return 'Chrome';
+                return 'chrome';
                 break;
                 
             case false !== strpos($_SERVER['HTTP_USER_AGENT'],'Safari'):
-                return 'Safari';
+                return 'safari';
                 break;
                 
             case false !== strpos($_SERVER['HTTP_USER_AGENT'],'Opera'):
-                return 'Opera';
+                return 'opera';
                 break;
                 
             case false !== strpos($_SERVER['HTTP_USER_AGENT'],'360SE'):
-                return '360SE';
+                return '360se';
                 break;
                 
             default:
