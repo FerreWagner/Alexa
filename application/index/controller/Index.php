@@ -15,10 +15,13 @@ class Index extends Base
         }else {
             $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.order desc')->paginate(6);
         }
+        
+        $art_count = db('article')->count('id');
         $system    = db('system')->select();
         $this->assign([
             'article'   => $article,
             'system'    => $system,
+            'art_count' => $art_count,
         ]);
         
         return $this->view->fetch('index');
