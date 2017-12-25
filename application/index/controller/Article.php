@@ -3,14 +3,17 @@ namespace app\index\controller;
 
 use app\index\common\Base;
 use think\Cookie;
+use app\admin\model\Feedback as FeedbackModel;
+use think\Loader;
+use think\Request;
 
 class Article extends Base
 {
     public function index()
     {
-        if (!password_verify($_SERVER['REMOTE_ADDR'], Cookie::get('token', 'alexa_'))) $this->error('Sry, You are not allowed to be allowed.');
+        if (!Cookie::get('token', 'alexa_')) $this->error('Sry, You are not allowed to be allowed.');
         
-        $article = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->find(input('id'));
+        $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->find(input('id'));
         $next_time = db('artsee')->where("ip = '{$_SERVER["REMOTE_ADDR"]}' AND rid = '{$article['id']}'")->order('time', 'desc')->find(); //是否存在已经浏览的ip
         
         
@@ -42,7 +45,26 @@ class Article extends Base
         return $this->view->fetch('article');
     }
     
-    
+    public function feedback(Request $request)
+    {
+        if ($request->isPost()){
+            $data         = input('post.');
+            $data['ip']   = $_SERVER['REMOTE_ADDR'];
+            $data['time'] = time();
+            $validate     = Loader::validate('Feedback');
+            if (!$validate->check($data)){
+                $this->error($validate->getError());
+            }
+        
+            $feed_model = new FeedbackModel();
+            if ($feed_model->allowField(true)->save($data)){
+                return $this->success('Your feedback has been successfully sent');
+            }else{
+                return $this->error('Insert error.');
+            }
+        
+        }
+    }
     
     public function getBrowser()
     {
