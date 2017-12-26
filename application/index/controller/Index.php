@@ -11,13 +11,13 @@ class Index extends Base
     {
         if (input('keywords')){
             $map['catename'] = ['like','%'.input('keywords').'%'];
-            $article = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.order desc')->where($map)->paginate(6);
+            $article = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.order desc')->where($map)->cache(1296000)->paginate(6);
         }else {
-            $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.order desc')->paginate(6);
+            $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.order desc')->cache(1296000)->paginate(6);
         }
         
-        $art_count = db('article')->count('id');
-        $system    = db('system')->select();
+        $art_count = db('article')->cache(1296000)->count('id');
+        $system    = db('system')->cache(1296000)->select();
         $this->assign([
             'article'   => $article,
             'system'    => $system,
