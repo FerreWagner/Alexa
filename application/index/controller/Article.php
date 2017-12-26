@@ -13,7 +13,7 @@ class Article extends Base
     {
         if (!Cookie::get('token', 'alexa_')) $this->error('Sry, You are not allowed to be allowed.');
         
-        $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->find(input('id'));
+        $article   = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->cache(1296000)->find(input('id'));
         $next_time = db('artsee')->where("ip = '{$_SERVER["REMOTE_ADDR"]}' AND rid = '{$article['id']}'")->order('time', 'desc')->find(); //是否存在已经浏览的ip
         
         
